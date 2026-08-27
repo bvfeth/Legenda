@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Легенда — Баскетбольная школа | Запись на занятия</title>
-    <meta name="description" content="Баскетбольная школа Легенда. Индивидуальные и групповые занятия для детей и взрослых. Опытные тренеры. Запишитесь на пробное занятие!">
-    <meta name="keywords" content="баскетбол Самара, тренировки по баскетболу, баскетбольная школа, обучение баскетболу, запись на баскетбол">
+    <title>Легенда — Баскетбольный клуб | Запись на занятия</title>
+    <meta name="description" content="Баскетбольный клуб Легенда. Индивидуальные и групповые занятия для детей и взрослых. Опытные тренеры. Запишитесь на пробное занятие!">
+    <meta name="keywords" content="баскетбол Самара, тренировки по баскетболу, баскетбольный клуб, обучение баскетболу, запись на баскетбол">
     <link rel="canonical" href="https://баскетбол-самара.рф/">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Легенда — Баскетбольная школа">
-    <meta property="og:description" content="Баскетбольная школа Легенда. Индивидуальные и групповые занятия. Опытные тренеры. Запишитесь на пробное занятие!">
+    <meta property="og:title" content="Легенда — Баскетбольный клуб">
+    <meta property="og:description" content="Баскетбольный клуб Легенда. Индивидуальные и групповые занятия. Опытные тренеры. Запишитесь на пробное занятие!">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://баскетбол-самара.рф/">
     <meta property="og:image" content="https://баскетбол-самара.рф/images/og-image.jpg">
@@ -296,90 +296,33 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            background: linear-gradient(135deg, #0b1a2e 0%, #1a365d 40%, #2a4a7a 100%);
+            justify-content: center;
             overflow: hidden;
             padding: 120px 0 80px;
         }
 
-        /* Фоновый логотип */
-        .hero-bg-logo {
+        /* ФОНОВОЕ ИЗОБРАЖЕНИЕ НА ВЕСЬ ЭКРАН */
+        .hero-bg {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 50%;
-            max-width: 600px;
-            opacity: 0.06;
-            pointer-events: none;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             z-index: 0;
-            user-select: none;
+            pointer-events: none;
         }
 
-        .hero::before {
-            content: '';
+        /* ТЁМНОЕ ЗАТЕМНЕНИЕ ПОВЕРХ ФОТО */
+        .hero-overlay {
             position: absolute;
-            inset: 0;
-            background:
-                radial-gradient(circle at 20% 50%, rgba(255, 140, 66, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(255, 140, 66, 0.05) 0%, transparent 40%);
-            pointer-events: none;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(11, 26, 46, 0.75);
             z-index: 0;
-        }
-
-        .hero .container {
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-balls {
-            position: absolute;
-            inset: 0;
-            overflow: hidden;
             pointer-events: none;
-        }
-
-        .hero-balls span {
-            position: absolute;
-            border-radius: 50%;
-            opacity: 0.04;
-            background: #ff8c42;
-            animation: float-balls 20s ease-in-out infinite;
-        }
-
-        .hero-balls span:nth-child(1) {
-            width: 300px;
-            height: 300px;
-            top: -100px;
-            left: -100px;
-            animation-delay: 0s;
-        }
-        .hero-balls span:nth-child(2) {
-            width: 200px;
-            height: 200px;
-            bottom: -50px;
-            right: -50px;
-            animation-delay: -5s;
-        }
-        .hero-balls span:nth-child(3) {
-            width: 400px;
-            height: 400px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            animation-delay: -10s;
-        }
-
-        @keyframes float-balls {
-            0%,
-            100% {
-                transform: translate(0, 0) scale(1);
-            }
-            33% {
-                transform: translate(30px, -30px) scale(1.1);
-            }
-            66% {
-                transform: translate(-20px, 20px) scale(0.9);
-            }
         }
 
         .hero .container {
@@ -387,30 +330,40 @@
             z-index: 2;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            gap: 40px;
             align-items: center;
         }
 
+        /* ЛЕВАЯ ЧАСТЬ — КОНТЕНТ */
         .hero-content {
-            animation: slide-up 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+            text-align: left;
         }
 
-        @keyframes slide-up {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        /* ЛОГОТИП НА ПЕРЕДНЕМ ПЛАНЕ — СПРАВА */
+        .hero-logo {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .hero-logo img {
+            width: 100%;
+            max-width: 450px;
+            height: auto;
+            filter: drop-shadow(0 10px 40px rgba(0, 0, 0, 0.5));
+            border-radius: 24px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .hero-badge {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(255, 140, 66, 0.15);
+            background: rgba(255, 140, 66, 0.2);
             color: #ff8c42;
             padding: 6px 18px;
             border-radius: 50px;
@@ -449,10 +402,10 @@
 
         .hero p {
             font-size: 18px;
-            opacity: 0.85;
-            max-width: 480px;
+            opacity: 0.92;
+            max-width: 520px;
             margin-bottom: 32px;
-            color: #cbd5e1;
+            color: #e2e8f0;
         }
 
         .hero-buttons {
@@ -501,34 +454,17 @@
         }
 
         .btn-outline {
-            background: rgba(255, 255, 255, 0.06);
+            background: rgba(255, 255, 255, 0.1);
             color: #fff;
-            border: 2px solid rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(10px);
         }
 
         .btn-outline:hover {
             border-color: #ff8c42;
-            background: rgba(255, 140, 66, 0.1);
+            background: rgba(255, 140, 66, 0.15);
             transform: translateY(-4px);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-        }
-
-        .hero-image {
-            animation: slide-up 1s 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-        }
-
-        .hero-image img {
-            border-radius: 24px;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
-            width: 100%;
-            max-height: 420px;
-            object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        .hero-image img:hover {
-            transform: scale(1.02) rotate(-1deg);
         }
 
         .hero-stats {
@@ -536,11 +472,12 @@
             gap: 40px;
             margin-top: 32px;
             padding-top: 28px;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            justify-content: center;
         }
 
         .hero-stats .stat {
-            text-align: left;
+            text-align: center;
         }
 
         .hero-stats .stat-number {
@@ -872,6 +809,7 @@
         .prices-grid .price-card:nth-child(2),
         .prices-grid .price-card:nth-child(3) {
             grid-row: 1;
+            width: 100%;
         }
 
         /* 4-я и 5-я карточки — в нижнем ряду по центру */
@@ -879,14 +817,14 @@
             grid-column: 1 / 2;
             grid-row: 2;
             justify-self: end;
-            max-width: 340px;
+            width: 340px;
         }
 
         .prices-grid .price-card:nth-child(5) {
             grid-column: 2 / 3;
             grid-row: 2;
             justify-self: start;
-            max-width: 340px;
+            width: 340px;
         }
 
         .price-card {
@@ -1196,82 +1134,6 @@
         }
 
         /* ==========================================
-                   ОТЗЫВЫ
-                ========================================== */
-        .reviews-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .review-card {
-            background: #fff;
-            border-radius: 24px;
-            padding: 30px 28px;
-            border: 1px solid rgba(0, 0, 0, 0.04);
-            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-            position: relative;
-        }
-
-        .review-card::before {
-            content: '\201C';
-            position: absolute;
-            top: 8px;
-            right: 20px;
-            font-size: 60px;
-            color: rgba(255, 140, 66, 0.08);
-            font-family: Georgia, serif;
-            line-height: 1;
-        }
-
-        .review-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.06);
-        }
-
-        .review-card .stars {
-            color: #f59e0b;
-            margin-bottom: 10px;
-            font-size: 16px;
-            letter-spacing: 2px;
-        }
-
-        .review-card .text {
-            font-size: 15px;
-            color: #1a2332;
-            margin-bottom: 14px;
-            font-style: italic;
-            line-height: 1.7;
-        }
-
-        .review-card .author {
-            font-weight: 700;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .review-card .author .avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #ff8c42, #ff6a00);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-weight: 700;
-            font-size: 16px;
-        }
-
-        .review-card .author span {
-            color: #64748b;
-            font-weight: 400;
-            font-size: 13px;
-        }
-
-        /* ==========================================
                    ФОРМА
                 ========================================== */
         .form-wrap {
@@ -1520,11 +1382,15 @@
             .hero .container {
                 grid-template-columns: 1fr;
                 text-align: center;
+                gap: 30px;
+            }
+
+            .hero-content {
+                text-align: center;
             }
 
             .hero p {
-                margin-left: auto;
-                margin-right: auto;
+                margin: 0 auto 32px;
             }
 
             .hero-buttons {
@@ -1535,13 +1401,20 @@
                 justify-content: center;
             }
 
-            .hero-image img {
-                max-height: 300px;
+            .hero-stats .stat {
+                text-align: center;
             }
 
-            .hero-bg-logo {
-                width: 70%;
-                max-width: 400px;
+            .hero-logo {
+                justify-content: center;
+            }
+
+            .hero-logo img {
+                max-width: 350px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
             }
 
             .about-grid {
@@ -1554,8 +1427,7 @@
             }
 
             .features-grid,
-            .halls-grid,
-            .reviews-grid {
+            .halls-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
 
@@ -1574,14 +1446,16 @@
                 grid-column: auto;
                 grid-row: auto;
                 justify-self: center;
-                max-width: 100%;
+                width: 100%;
+                max-width: 340px;
             }
 
             .prices-grid .price-card:nth-child(5) {
                 grid-column: auto;
                 grid-row: auto;
                 justify-self: center;
-                max-width: 100%;
+                width: 100%;
+                max-width: 340px;
             }
 
             .gallery-grid {
@@ -1653,24 +1527,40 @@
             }
 
             .hero {
-                padding: 120px 0 60px;
+                padding: 100px 0 60px;
                 min-height: auto;
             }
 
+            .hero .container {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
             .hero h1 {
-                font-size: 30px;
+                font-size: 28px;
+            }
+
+            .hero-logo img {
+                max-width: 250px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
             }
 
             .hero-stats {
                 flex-wrap: wrap;
-                gap: 20px;
+                gap: 16px;
                 justify-content: center;
             }
 
-            .hero-bg-logo {
-                width: 80%;
-                max-width: 300px;
-                opacity: 0.04;
+            .hero-stats .stat-number {
+                font-size: 22px;
             }
 
             .section-title {
@@ -1679,7 +1569,6 @@
 
             .features-grid,
             .halls-grid,
-            .reviews-grid,
             .contact-grid {
                 grid-template-columns: 1fr;
             }
@@ -1694,14 +1583,14 @@
                 grid-column: auto;
                 grid-row: auto;
                 justify-self: center;
-                max-width: 100%;
+                width: 100%;
             }
 
             .prices-grid .price-card:nth-child(5) {
                 grid-column: auto;
                 grid-row: auto;
                 justify-self: center;
-                max-width: 100%;
+                width: 100%;
             }
 
             .gallery-grid {
@@ -1748,12 +1637,17 @@
 
         @media (max-width: 480px) {
             .hero h1 {
-                font-size: 26px;
+                font-size: 22px;
             }
 
             .btn {
                 padding: 12px 24px;
                 font-size: 14px;
+            }
+
+            .hero-logo img {
+                max-width: 180px;
+                padding: 10px;
             }
 
             .gallery-grid img {
@@ -1770,12 +1664,6 @@
 
             .news-card .news-image {
                 height: 180px;
-            }
-
-            .hero-bg-logo {
-                width: 90%;
-                max-width: 200px;
-                opacity: 0.03;
             }
 
             .hall-card .hall-image {
@@ -1804,7 +1692,7 @@
                 <img src="logo_legenda.jpg" alt="Логотип Легенда">
                 <div>
                     <div class="logo-text">Легенда</div>
-                    <span class="logo-sub">Баскетбольная школа</span>
+                    <span class="logo-sub">Баскетбольный клуб</span>
                 </div>
             </div>
 
@@ -1838,7 +1726,6 @@
                 <li><a href="#prices">Цены</a></li>
                 <li><a href="#gallery">Фото</a></li>
                 <li><a href="#news">Новости</a></li>
-                <li><a href="#reviews">Отзывы</a></li>
                 <li><a href="#signup">Запись</a></li>
                 <li><a href="#contacts">Контакты</a></li>
             </ul>
@@ -1849,19 +1736,19 @@
     ГЕРОЙ
     ========================================== -->
     <section class="hero" id="hero">
-        <img class="hero-bg-logo" src="logo_legenda.jpg" alt="Логотип Легенда">
+        <!-- ФОНОВОЕ ИЗОБРАЖЕНИЕ НА ВЕСЬ ЭКРАН -->
+        <img class="hero-bg" src="hero_team.jpg" alt="Баскетбольный клуб Легенда">
         
-        <div class="hero-balls">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
+        <!-- ТЁМНОЕ ЗАТЕМНЕНИЕ -->
+        <div class="hero-overlay"></div>
+
         <div class="container">
+            <!-- ЛЕВАЯ ЧАСТЬ — КОНТЕНТ -->
             <div class="hero-content">
                 <div class="hero-badge">
                     <i class="fas fa-fire"></i> Набор открыт
                 </div>
-                <h1>Баскетбольная школа <span>Легенда</span></h1>
+                <h1>Баскетбольный клуб <span>Легенда</span></h1>
                 <p>Индивидуальные и групповые занятия для детей от 6 лет и взрослых. Опытные тренеры, удобный график.</p>
                 <div class="hero-buttons">
                     <a href="#signup" class="btn btn-primary"><i class="fas fa-pen"></i> Записаться на пробное</a>
@@ -1882,8 +1769,10 @@
                     </div>
                 </div>
             </div>
-            <div class="hero-image">
-                <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=800&h=500&fit=crop&crop=center" alt="Тренировка по баскетболу">
+
+            <!-- ПРАВАЯ ЧАСТЬ — ЛОГОТИП -->
+            <div class="hero-logo">
+                <img src="logo_legenda.jpg" alt="Логотип Легенда">
             </div>
         </div>
     </section>
@@ -1924,7 +1813,7 @@
             <div class="about-grid">
                 <div class="about-text">
                     <h2>О <span>нашей школе</span></h2>
-                    <p>Баскетбольная школа Легенда — это место, где каждый может научиться играть в баскетбол, улучшить свои навыки и найти новых друзей.</p>
+                    <p>Баскетбольный клуб Легенда — это место, где каждый может научиться играть в баскетбол, улучшить свои навыки и найти новых друзей.</p>
                     <p>Мы работаем с 2015 года и за это время обучили более 1000 спортсменов. Наши воспитанники участвуют в городских соревнованиях и показывают отличные результаты.</p>
                     <ul>
                         <li><i class="fas fa-check-circle"></i> Индивидуальный подход к каждому ученику</li>
@@ -1934,7 +1823,7 @@
                     </ul>
                 </div>
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1519861531473-9200262188bf?w=600&h=450&fit=crop&crop=center" alt="Баскетбольная школа Легенда">
+                    <img src="https://images.unsplash.com/photo-1519861531473-9200262188bf?w=600&h=450&fit=crop&crop=center" alt="Баскетбольный клуб Легенда">
                 </div>
             </div>
         </div>
@@ -2173,45 +2062,6 @@
     </section>
 
     <!-- ==========================================
-    ОТЗЫВЫ
-    ========================================== -->
-    <section class="section section-dark" id="reviews">
-        <div class="container">
-            <h2 class="section-title text-center"><i class="fas fa-comment-dots"></i> Отзывы наших учеников</h2>
-            <p class="section-subtitle text-center">Реальные слова благодарности</p>
-
-            <div class="reviews-grid">
-                <div class="review-card">
-                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <div class="text">«Сын занимается уже полгода. Огромный прогресс! Тренер Александр нашёл подход к ребёнку. Спасибо школе!»</div>
-                    <div class="author">
-                        <div class="avatar">Е</div>
-                        Екатерина <span>— мама Артёма, 9 лет</span>
-                    </div>
-                </div>
-
-                <div class="review-card">
-                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <div class="text">«Пришёл в школу с нуля, сейчас играю в любительской команде. Лучшие тренеры в Самаре!»</div>
-                    <div class="author">
-                        <div class="avatar">М</div>
-                        Максим <span>— ученик, 25 лет</span>
-                    </div>
-                </div>
-
-                <div class="review-card">
-                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <div class="text">«Дочь бегает на тренировки с удовольствием. Удобное расписание, отличный коллектив. Рекомендую!»</div>
-                    <div class="author">
-                        <div class="avatar">О</div>
-                        Ольга <span>— мама Лизы, 12 лет</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==========================================
     ЗАПИСЬ (ФОРМА)
     ========================================== -->
     <section class="section section-light" id="signup">
@@ -2288,7 +2138,7 @@
                             <div class="logo-text" style="font-size:20px; color:#fff;">Легенда</div>
                         </div>
                     </div>
-                    <p style="font-size:14px;">Баскетбольная школа для детей и взрослых</p>
+                    <p style="font-size:14px;">Баскетбольный клуб для детей и взрослых</p>
                     <div class="footer-phone" style="margin-top:10px;">
                         <i class="fas fa-phone-alt"></i>
                         <a href="tel:+79171406726" style="color:#fff;">+7 (917) 140-67-26</a>
@@ -2306,7 +2156,6 @@
                     <a href="#about">О нас</a>
                     <a href="#halls">Залы</a>
                     <a href="#prices">Цены</a>
-                    <a href="#reviews">Отзывы</a>
                 </div>
 
                 <div>
@@ -2595,20 +2444,6 @@
             e.preventDefault();
             alert('Спасибо! Ваша заявка отправлена. Мы перезвоним вам в ближайшее время.');
             this.reset();
-        });
-
-        // =====================
-        // 9. ПАРАЛЛАКС ДЛЯ БАЛЛОВ
-        // =====================
-        document.addEventListener('mousemove', function(e) {
-            const balls = document.querySelectorAll('.hero-balls span');
-            const x = (e.clientX / window.innerWidth - 0.5) * 20;
-            const y = (e.clientY / window.innerHeight - 0.5) * 20;
-
-            balls.forEach((ball, i) => {
-                const speed = 1 + i * 0.5;
-                ball.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
-            });
         });
     </script>
 
