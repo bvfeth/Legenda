@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Баскетбол Самара — Тренировки по баскетболу | Запись на занятия</title>
-    <meta name="description" content="Тренировки по баскетболу в Самаре. Индивидуальные и групповые занятия для детей и взрослых. Опытные тренеры. Запишитесь на пробное занятие!">
+    <title>Легенда — Баскетбольная школа | Запись на занятия</title>
+    <meta name="description" content="Баскетбольная школа Легенда. Индивидуальные и групповые занятия для детей и взрослых. Опытные тренеры. Запишитесь на пробное занятие!">
     <meta name="keywords" content="баскетбол Самара, тренировки по баскетболу, баскетбольная школа, обучение баскетболу, запись на баскетбол">
     <link rel="canonical" href="https://баскетбол-самара.рф/">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Баскетбол Самара — Тренировки по баскетболу">
-    <meta property="og:description" content="Тренировки по баскетболу в Самаре. Индивидуальные и групповые занятия. Опытные тренеры. Запишитесь на пробное занятие!">
+    <meta property="og:title" content="Легенда — Баскетбольная школа">
+    <meta property="og:description" content="Баскетбольная школа Легенда. Индивидуальные и групповые занятия. Опытные тренеры. Запишитесь на пробное занятие!">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://баскетбол-самара.рф/">
     <meta property="og:image" content="https://баскетбол-самара.рф/images/og-image.jpg">
-    <meta property="og:site_name" content="Баскетбол Самара">
+    <meta property="og:site_name" content="Легенда">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -113,20 +113,10 @@
             gap: 12px;
         }
 
-        .logo-icon {
-            font-size: 30px;
-            color: #ff8c42;
-            animation: pulse-float 3s ease-in-out infinite;
-        }
-
-        @keyframes pulse-float {
-            0%,
-            100% {
-                transform: translateY(0) scale(1);
-            }
-            50% {
-                transform: translateY(-4px) scale(1.05);
-            }
+        .logo img {
+            height: 40px;
+            width: auto;
+            border-radius: 8px;
         }
 
         .logo-text {
@@ -311,6 +301,20 @@
             padding: 120px 0 80px;
         }
 
+        /* Фоновый логотип */
+        .hero-bg-logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50%;
+            max-width: 600px;
+            opacity: 0.06;
+            pointer-events: none;
+            z-index: 0;
+            user-select: none;
+        }
+
         .hero::before {
             content: '';
             position: absolute;
@@ -319,9 +323,14 @@
                 radial-gradient(circle at 20% 50%, rgba(255, 140, 66, 0.08) 0%, transparent 50%),
                 radial-gradient(circle at 80% 80%, rgba(255, 140, 66, 0.05) 0%, transparent 40%);
             pointer-events: none;
+            z-index: 0;
         }
 
-        /* Анимированные шары на фоне */
+        .hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
         .hero-balls {
             position: absolute;
             inset: 0;
@@ -567,10 +576,6 @@
             background: #f5f8fc;
         }
 
-        .section-gradient {
-            background: linear-gradient(180deg, #f5f8fc 0%, #ffffff 100%);
-        }
-
         .section-title {
             font-size: 36px;
             font-weight: 900;
@@ -765,122 +770,90 @@
         }
 
         /* ==========================================
-                   ТРЕНЕРЫ
+                   ЗАЛЫ
                 ========================================== */
-        .coaches-grid {
+        .halls-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
         }
 
-        .coach-card {
+        .hall-card {
             background: #fff;
             border-radius: 24px;
             overflow: hidden;
             border: 1px solid rgba(0, 0, 0, 0.04);
             transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-            text-align: center;
             position: relative;
         }
 
-        .coach-card::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 24px;
-            background: linear-gradient(135deg, rgba(255, 140, 66, 0.05), transparent);
-            opacity: 0;
-            transition: opacity 0.6s;
-            pointer-events: none;
+        .hall-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
         }
 
-        .coach-card:hover::after {
-            opacity: 1;
-        }
-
-        .coach-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 24px 64px rgba(0, 0, 0, 0.08);
-        }
-
-        .coach-card .image-wrap {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .coach-card .image-wrap::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(11, 26, 46, 0.4), transparent);
-            z-index: 1;
-            opacity: 0;
-            transition: opacity 0.6s;
-        }
-
-        .coach-card:hover .image-wrap::before {
-            opacity: 1;
-        }
-
-        .coach-card img {
+        .hall-card .hall-image {
             width: 100%;
-            height: 280px;
+            height: 220px;
             object-fit: cover;
             transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        .coach-card:hover img {
-            transform: scale(1.06);
+        .hall-card:hover .hall-image {
+            transform: scale(1.04);
         }
 
-        .coach-card .info {
-            padding: 24px 24px 28px;
-            position: relative;
-            z-index: 2;
+        .hall-card .hall-body {
+            padding: 24px 28px 28px;
         }
 
-        .coach-card h4 {
+        .hall-card .hall-icon {
+            font-size: 28px;
+            color: #ff8c42;
+            margin-bottom: 8px;
+        }
+
+        .hall-card h4 {
             font-size: 20px;
             font-weight: 700;
-            margin-bottom: 2px;
+            margin-bottom: 6px;
+            color: #0b1a2e;
         }
 
-        .coach-card .position {
-            color: #ff8c42;
-            font-weight: 600;
-            font-size: 14px;
-        }
-
-        .coach-card .experience {
+        .hall-card .hall-address {
             color: #64748b;
             font-size: 14px;
-            margin-top: 6px;
-        }
-
-        .coach-card .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 12px;
-        }
-
-        .coach-card .social-links a {
-            width: 34px;
-            height: 34px;
-            border-radius: 50%;
-            background: #f0f4f8;
             display: flex;
             align-items: center;
-            justify-content: center;
-            color: #1a2332;
-            font-size: 13px;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            gap: 8px;
+            margin-bottom: 4px;
         }
 
-        .coach-card .social-links a:hover {
-            background: #ff8c42;
-            color: #fff;
-            transform: translateY(-3px) scale(1.1);
+        .hall-card .hall-address i {
+            color: #ff8c42;
+            width: 18px;
+        }
+
+        .hall-card .hall-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 14px;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #e9edf2;
+        }
+
+        .hall-card .hall-features span {
+            font-size: 13px;
+            color: #475569;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .hall-card .hall-features span i {
+            color: #ff8c42;
+            font-size: 12px;
         }
 
         /* ==========================================
@@ -890,6 +863,30 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* Первые 3 карточки — в верхнем ряду */
+        .prices-grid .price-card:nth-child(1),
+        .prices-grid .price-card:nth-child(2),
+        .prices-grid .price-card:nth-child(3) {
+            grid-row: 1;
+        }
+
+        /* 4-я и 5-я карточки — в нижнем ряду по центру */
+        .prices-grid .price-card:nth-child(4) {
+            grid-column: 1 / 2;
+            grid-row: 2;
+            justify-self: end;
+            max-width: 340px;
+        }
+
+        .prices-grid .price-card:nth-child(5) {
+            grid-column: 2 / 3;
+            grid-row: 2;
+            justify-self: start;
+            max-width: 340px;
         }
 
         .price-card {
@@ -900,6 +897,7 @@
             text-align: center;
             transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
             position: relative;
+            width: 100%;
         }
 
         .price-card:hover {
@@ -975,58 +973,6 @@
         }
 
         /* ==========================================
-                   РАСПИСАНИЕ
-                ========================================== */
-        .schedule-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 14px;
-        }
-
-        .schedule-item {
-            background: #fff;
-            border-radius: 16px;
-            padding: 18px 24px;
-            border: 1px solid rgba(0, 0, 0, 0.04);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            cursor: default;
-        }
-
-        .schedule-item:hover {
-            border-color: #ff8c42;
-            transform: translateX(6px) scale(1.01);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-        }
-
-        .schedule-item .day {
-            font-weight: 700;
-            font-size: 16px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .schedule-item .day i {
-            color: #ff8c42;
-            font-size: 14px;
-        }
-
-        .schedule-item .time {
-            color: #ff8c42;
-            font-weight: 700;
-            font-size: 16px;
-        }
-
-        .schedule-item .group {
-            color: #64748b;
-            font-size: 13px;
-            font-weight: 500;
-        }
-
-        /* ==========================================
                    ФОТОГАЛЕРЕЯ
                 ========================================== */
         .gallery-grid {
@@ -1083,6 +1029,170 @@
 
         .gallery-grid .gallery-item:hover img {
             transform: scale(1.08);
+        }
+
+        /* ==========================================
+                   НОВОСТИ — КАРУСЕЛЬ
+                ========================================== */
+        .news-section {
+            background: linear-gradient(180deg, #f5f8fc 0%, #ffffff 100%);
+            padding: 80px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .news-carousel {
+            position: relative;
+            overflow: hidden;
+            padding: 10px 0;
+        }
+
+        .news-track {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            gap: 30px;
+        }
+
+        .news-card {
+            min-width: calc(33.333% - 20px);
+            background: #fff;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            flex-shrink: 0;
+        }
+
+        .news-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+        }
+
+        .news-card .news-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .news-card:hover .news-image {
+            transform: scale(1.04);
+        }
+
+        .news-card .news-body {
+            padding: 24px 28px 28px;
+        }
+
+        .news-card .news-date {
+            font-size: 13px;
+            color: #ff8c42;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .news-card .news-date i {
+            font-size: 14px;
+        }
+
+        .news-card h4 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #0b1a2e;
+            line-height: 1.3;
+        }
+
+        .news-card p {
+            color: #475569;
+            font-size: 15px;
+            line-height: 1.7;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .news-card .news-read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #ff8c42;
+            font-weight: 600;
+            font-size: 14px;
+            margin-top: 14px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .news-card .news-read-more:hover {
+            gap: 14px;
+            color: #e6782e;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: #fff;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            color: #1a2332;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-btn:hover {
+            background: #ff8c42;
+            color: #fff;
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 8px 30px rgba(255, 140, 66, 0.3);
+        }
+
+        .carousel-btn.prev {
+            left: -26px;
+        }
+
+        .carousel-btn.next {
+            right: -26px;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 32px;
+        }
+
+        .carousel-dots .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #d1d9e6;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .carousel-dots .dot.active {
+            background: #ff8c42;
+            transform: scale(1.3);
+            box-shadow: 0 4px 16px rgba(255, 140, 66, 0.3);
+        }
+
+        .carousel-dots .dot:hover {
+            transform: scale(1.2);
+            background: #ff8c42;
         }
 
         /* ==========================================
@@ -1244,8 +1354,10 @@
                 ========================================== */
         .contact-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 30px;
+            max-width: 700px;
+            margin: 0 auto;
         }
 
         .contact-item {
@@ -1427,6 +1539,11 @@
                 max-height: 300px;
             }
 
+            .hero-bg-logo {
+                width: 70%;
+                max-width: 400px;
+            }
+
             .about-grid {
                 grid-template-columns: 1fr;
                 text-align: center;
@@ -1437,15 +1554,50 @@
             }
 
             .features-grid,
-            .coaches-grid,
-            .prices-grid,
-            .reviews-grid,
-            .contact-grid {
+            .halls-grid,
+            .reviews-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+
+            .prices-grid {
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 700px;
+            }
+
+            .prices-grid .price-card:nth-child(1),
+            .prices-grid .price-card:nth-child(2),
+            .prices-grid .price-card:nth-child(3) {
+                grid-row: auto;
+            }
+
+            .prices-grid .price-card:nth-child(4) {
+                grid-column: auto;
+                grid-row: auto;
+                justify-self: center;
+                max-width: 100%;
+            }
+
+            .prices-grid .price-card:nth-child(5) {
+                grid-column: auto;
+                grid-row: auto;
+                justify-self: center;
+                max-width: 100%;
             }
 
             .gallery-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+
+            .news-card {
+                min-width: calc(50% - 15px);
+            }
+
+            .carousel-btn.prev {
+                left: -10px;
+            }
+
+            .carousel-btn.next {
+                right: -10px;
             }
 
             .footer-grid {
@@ -1515,26 +1667,41 @@
                 justify-content: center;
             }
 
+            .hero-bg-logo {
+                width: 80%;
+                max-width: 300px;
+                opacity: 0.04;
+            }
+
             .section-title {
                 font-size: 28px;
             }
 
             .features-grid,
-            .coaches-grid,
-            .prices-grid,
+            .halls-grid,
             .reviews-grid,
             .contact-grid {
                 grid-template-columns: 1fr;
             }
 
-            .schedule-grid {
+            .prices-grid {
                 grid-template-columns: 1fr;
+                max-width: 400px;
+                margin: 0 auto;
             }
 
-            .schedule-item {
-                flex-direction: column;
-                text-align: center;
-                gap: 4px;
+            .prices-grid .price-card:nth-child(4) {
+                grid-column: auto;
+                grid-row: auto;
+                justify-self: center;
+                max-width: 100%;
+            }
+
+            .prices-grid .price-card:nth-child(5) {
+                grid-column: auto;
+                grid-row: auto;
+                justify-self: center;
+                max-width: 100%;
             }
 
             .gallery-grid {
@@ -1544,6 +1711,24 @@
 
             .gallery-grid img {
                 height: 150px;
+            }
+
+            .news-card {
+                min-width: 100%;
+            }
+
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+
+            .carousel-btn.prev {
+                left: -6px;
+            }
+
+            .carousel-btn.next {
+                right: -6px;
             }
 
             .form-wrap {
@@ -1582,6 +1767,24 @@
             .header-phone {
                 font-size: 15px;
             }
+
+            .news-card .news-image {
+                height: 180px;
+            }
+
+            .hero-bg-logo {
+                width: 90%;
+                max-width: 200px;
+                opacity: 0.03;
+            }
+
+            .hall-card .hall-image {
+                height: 180px;
+            }
+
+            .contact-grid {
+                max-width: 100%;
+            }
         }
     </style>
 </head>
@@ -1598,10 +1801,10 @@
     <header class="header" id="header">
         <div class="container">
             <div class="logo">
-                <div class="logo-icon"><i class="fas fa-basketball-ball"></i></div>
+                <img src="logo_legenda.jpg" alt="Логотип Легенда">
                 <div>
-                    <div class="logo-text">Баскетбол <span>Самара</span></div>
-                    <span class="logo-sub">Тренировки для всех</span>
+                    <div class="logo-text">Легенда</div>
+                    <span class="logo-sub">Баскетбольная школа</span>
                 </div>
             </div>
 
@@ -1612,12 +1815,12 @@
             <div class="header-right" id="headerRight">
                 <div class="header-phone">
                     <i class="fas fa-phone-alt"></i>
-                    <a href="tel:+79991234567">+7 (999) 123-45-67</a>
+                    <a href="tel:+79171406726">+7 (917) 140-67-26</a>
                 </div>
                 <div class="header-social">
-                    <a href="#" aria-label="ВКонтакте"><i class="fab fa-vk"></i></a>
-                    <a href="#" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://vk.ru/public192199445" aria-label="ВКонтакте"><i class="fab fa-vk"></i></a>
+                    <a href="https://t.me/basketlegend" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+                    <a href="https://www.instagram.com/legenda_basketball_samara" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                 </div>
                 <a href="#signup" class="btn-signup-header"><i class="fas fa-pen"></i> Записаться</a>
             </div>
@@ -1631,10 +1834,10 @@
         <div class="container">
             <ul id="mainMenu">
                 <li><a href="#about">О нас</a></li>
-                <li><a href="#coaches">Тренеры</a></li>
+                <li><a href="#halls">Залы</a></li>
                 <li><a href="#prices">Цены</a></li>
-                <li><a href="#schedule">Расписание</a></li>
                 <li><a href="#gallery">Фото</a></li>
+                <li><a href="#news">Новости</a></li>
                 <li><a href="#reviews">Отзывы</a></li>
                 <li><a href="#signup">Запись</a></li>
                 <li><a href="#contacts">Контакты</a></li>
@@ -1646,6 +1849,8 @@
     ГЕРОЙ
     ========================================== -->
     <section class="hero" id="hero">
+        <img class="hero-bg-logo" src="logo_legenda.jpg" alt="Логотип Легенда">
+        
         <div class="hero-balls">
             <span></span>
             <span></span>
@@ -1656,7 +1861,7 @@
                 <div class="hero-badge">
                     <i class="fas fa-fire"></i> Набор открыт
                 </div>
-                <h1>Тренировки по баскетболу <span>в Самаре</span></h1>
+                <h1>Баскетбольная школа <span>Легенда</span></h1>
                 <p>Индивидуальные и групповые занятия для детей от 6 лет и взрослых. Опытные тренеры, удобный график.</p>
                 <div class="hero-buttons">
                     <a href="#signup" class="btn btn-primary"><i class="fas fa-pen"></i> Записаться на пробное</a>
@@ -1664,21 +1869,21 @@
                 </div>
                 <div class="hero-stats">
                     <div class="stat">
-                        <span class="stat-number"><span data-count="500">0</span>+</span>
-                        <span class="stat-label">Выпускников</span>
+                        <span class="stat-number"><span data-count="1000">0</span>+</span>
+                        <span class="stat-label">Спортсменов</span>
                     </div>
                     <div class="stat">
-                        <span class="stat-number"><span data-count="12">0</span>+</span>
-                        <span class="stat-label">Лет опыта</span>
+                        <span class="stat-number"><span data-count="15">0</span>+</span>
+                        <span class="stat-label">Зал</span>
                     </div>
                     <div class="stat">
-                        <span class="stat-number"><span data-count="8">0</span></span>
+                        <span class="stat-number"><span data-count="15">0</span></span>
                         <span class="stat-label">Тренеров</span>
                     </div>
                 </div>
             </div>
             <div class="hero-image">
-                <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=800&h=500&fit=crop&crop=center" alt="Тренировка по баскетболу в Самаре">
+                <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=800&h=500&fit=crop&crop=center" alt="Тренировка по баскетболу">
             </div>
         </div>
     </section>
@@ -1691,7 +1896,7 @@
             <h2 class="section-title text-center"><i class="fas fa-star"></i> Почему выбирают нас</h2>
             <p class="section-subtitle text-center">Мы создаём комфортную среду для роста и развития</p>
 
-            <div class="features-grid" data-aos="fade-up">
+            <div class="features-grid">
                 <div class="feature-card">
                     <div class="icon"><i class="fas fa-user-graduate"></i></div>
                     <h3>Опытные тренеры</h3>
@@ -1719,8 +1924,8 @@
             <div class="about-grid">
                 <div class="about-text">
                     <h2>О <span>нашей школе</span></h2>
-                    <p>Баскетбольная школа в Самаре — это место, где каждый может научиться играть в баскетбол, улучшить свои навыки и найти новых друзей.</p>
-                    <p>Мы работаем с 2015 года и за это время обучили более 500 учеников. Наши воспитанники участвуют в городских соревнованиях и показывают отличные результаты.</p>
+                    <p>Баскетбольная школа Легенда — это место, где каждый может научиться играть в баскетбол, улучшить свои навыки и найти новых друзей.</p>
+                    <p>Мы работаем с 2015 года и за это время обучили более 1000 спортсменов. Наши воспитанники участвуют в городских соревнованиях и показывают отличные результаты.</p>
                     <ul>
                         <li><i class="fas fa-check-circle"></i> Индивидуальный подход к каждому ученику</li>
                         <li><i class="fas fa-check-circle"></i> Современные методики тренировок</li>
@@ -1729,60 +1934,71 @@
                     </ul>
                 </div>
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1519861531473-9200262188bf?w=600&h=450&fit=crop&crop=center" alt="Баскетбольная школа в Самаре">
+                    <img src="https://images.unsplash.com/photo-1519861531473-9200262188bf?w=600&h=450&fit=crop&crop=center" alt="Баскетбольная школа Легенда">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ==========================================
-    ТРЕНЕРЫ
+    ЗАЛЫ
     ========================================== -->
-    <section class="section section-light" id="coaches">
+    <section class="section section-light" id="halls">
         <div class="container">
-            <h2 class="section-title text-center"><i class="fas fa-chalkboard-teacher"></i> Наши тренеры</h2>
-            <p class="section-subtitle text-center">Профессионалы, которые помогут вам достичь целей</p>
+            <h2 class="section-title text-center"><i class="fas fa-building"></i> Наши залы</h2>
+            <p class="section-subtitle text-center">Современные площадки для комфортных тренировок</p>
 
-            <div class="coaches-grid">
-                <div class="coach-card">
-                    <div class="image-wrap">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=center" alt="Тренер Александр">
-                    </div>
-                    <div class="info">
-                        <h4>Александр Петров</h4>
-                        <div class="position">Мастер спорта, главный тренер</div>
-                        <div class="experience">Стаж 12 лет. Работа с профессионалами</div>
-                        <div class="social-links">
-                            <a href="#"><i class="fab fa-vk"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
+            <div class="halls-grid">
+                <!-- ЗАЛ 1 -->
+                <div class="hall-card">
+                    <img class="hall-image" src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&h=400&fit=crop" alt="Спорткомплекс ЦСК ВВС">
+                    <div class="hall-body">
+                        <div class="hall-icon"><i class="fas fa-basketball-ball"></i></div>
+                        <h4>ЦСК ВВС</h4>
+                        <div class="hall-address">
+                            <i class="fas fa-map-marker-alt"></i> ул. Молодогвардейская, 1
+                        </div>
+                        <div class="hall-features">
+                            <span><i class="fas fa-check-circle"></i> 2 площадки</span>
+                            <span><i class="fas fa-check-circle"></i> Трибуны</span>
+                            <span><i class="fas fa-check-circle"></i> Раздевалки</span>
+                            <span><i class="fas fa-check-circle"></i> Душ</span>
                         </div>
                     </div>
                 </div>
-                <div class="coach-card">
-                    <div class="image-wrap">
-                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&crop=center" alt="Тренер Дмитрий">
-                    </div>
-                    <div class="info">
-                        <h4>Дмитрий Соколов</h4>
-                        <div class="position">Кандидат в мастера спорта</div>
-                        <div class="experience">Стаж 8 лет. Работа с детьми и подростками</div>
-                        <div class="social-links">
-                            <a href="#"><i class="fab fa-vk"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
+
+                <!-- ЗАЛ 2 -->
+                <div class="hall-card">
+                    <img class="hall-image" src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&h=400&fit=crop" alt="Спорткомплекс Локомотив">
+                    <div class="hall-body">
+                        <div class="hall-icon"><i class="fas fa-basketball-ball"></i></div>
+                        <h4>Локомотив</h4>
+                        <div class="hall-address">
+                            <i class="fas fa-map-marker-alt"></i> ул. Аэродромная, 16
+                        </div>
+                        <div class="hall-features">
+                            <span><i class="fas fa-check-circle"></i> 1 площадка</span>
+                            <span><i class="fas fa-check-circle"></i> Трибуны</span>
+                            <span><i class="fas fa-check-circle"></i> Раздевалки</span>
+                            <span><i class="fas fa-check-circle"></i> Душ</span>
                         </div>
                     </div>
                 </div>
-                <div class="coach-card">
-                    <div class="image-wrap">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=center" alt="Тренер Игорь">
-                    </div>
-                    <div class="info">
-                        <h4>Игорь Волков</h4>
-                        <div class="position">Мастер спорта международного класса</div>
-                        <div class="experience">Стаж 15 лет. Индивидуальные тренировки</div>
-                        <div class="social-links">
-                            <a href="#"><i class="fab fa-vk"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
+
+                <!-- ЗАЛ 3 -->
+                <div class="hall-card">
+                    <img class="hall-image" src="https://images.unsplash.com/photo-1519861531473-9200262188bf?w=600&h=400&fit=crop" alt="Спорткомплекс Металлург">
+                    <div class="hall-body">
+                        <div class="hall-icon"><i class="fas fa-basketball-ball"></i></div>
+                        <h4>Металлург</h4>
+                        <div class="hall-address">
+                            <i class="fas fa-map-marker-alt"></i> пр. Кирова, 20
+                        </div>
+                        <div class="hall-features">
+                            <span><i class="fas fa-check-circle"></i> 1 площадка</span>
+                            <span><i class="fas fa-check-circle"></i> Тренажёрный зал</span>
+                            <span><i class="fas fa-check-circle"></i> Раздевалки</span>
+                            <span><i class="fas fa-check-circle"></i> Душ</span>
                         </div>
                     </div>
                 </div>
@@ -1793,15 +2009,16 @@
     <!-- ==========================================
     ЦЕНЫ
     ========================================== -->
-    <section class="section section-dark" id="prices">
+    <section class="section section-light" id="prices">
         <div class="container">
             <h2 class="section-title text-center"><i class="fas fa-ruble-sign"></i> Цены на тренировки</h2>
             <p class="section-subtitle text-center">Выберите подходящий формат занятий</p>
 
             <div class="prices-grid">
+                <!-- КАРТОЧКА 1 — ПРОБНОЕ ЗАНЯТИЕ -->
                 <div class="price-card">
                     <h3>Пробное занятие</h3>
-                    <div class="price">500 <span>₽</span></div>
+                    <div class="price">БЕСПЛАТНО</div>
                     <ul>
                         <li><i class="fas fa-check"></i> 60 минут</li>
                         <li><i class="fas fa-check"></i> Индивидуальный подход</li>
@@ -1810,6 +2027,7 @@
                     <a href="#signup" class="btn btn-primary">Записаться</a>
                 </div>
 
+                <!-- КАРТОЧКА 2 — АБОНЕМЕНТ (ПОПУЛЯРНЫЙ) -->
                 <div class="price-card popular">
                     <div class="badge">🔥 Популярное</div>
                     <h3>Абонемент на месяц</h3>
@@ -1822,9 +2040,34 @@
                     <a href="#signup" class="btn btn-primary">Записаться</a>
                 </div>
 
+                <!-- КАРТОЧКА 3 — ИГРОВЫЕ ДНИ -->
+                <div class="price-card">
+                    <h3>Игровые дни</h3>
+                    <div class="price">500 <span>₽</span></div>
+                    <ul>
+                        <li><i class="fas fa-check"></i> 1,5 часа игры</li>
+                        <li><i class="fas fa-check"></i> Командные матчи</li>
+                        <li><i class="fas fa-check"></i> Судейство</li>
+                    </ul>
+                    <a href="#signup" class="btn btn-primary">Записаться</a>
+                </div>
+
+                <!-- КАРТОЧКА 4 — РАЗОВОЕ ПОСЕЩЕНИЕ -->
+                <div class="price-card">
+                    <h3>Разовое посещение</h3>
+                    <div class="price">600 <span>₽</span></div>
+                    <ul>
+                        <li><i class="fas fa-check"></i> 1 тренировка</li>
+                        <li><i class="fas fa-check"></i> Групповая тренировка</li>
+                        <li><i class="fas fa-check"></i> Удобное время</li>
+                    </ul>
+                    <a href="#signup" class="btn btn-primary">Записаться</a>
+                </div>
+
+                <!-- КАРТОЧКА 5 — ИНДИВИДУАЛЬНО -->
                 <div class="price-card">
                     <h3>Индивидуально</h3>
-                    <div class="price">1 500 <span>₽/час</span></div>
+                    <div class="price">от 1 500 <span>₽/час</span></div>
                     <ul>
                         <li><i class="fas fa-check"></i> Индивидуальный план</li>
                         <li><i class="fas fa-check"></i> Работа над ошибками</li>
@@ -1837,62 +2080,9 @@
     </section>
 
     <!-- ==========================================
-    РАСПИСАНИЕ
-    ========================================== -->
-    <section class="section section-light" id="schedule">
-        <div class="container">
-            <h2 class="section-title text-center"><i class="fas fa-calendar-alt"></i> Расписание тренировок</h2>
-            <p class="section-subtitle text-center">Выберите удобное время для занятий</p>
-
-            <div class="schedule-grid">
-                <div class="schedule-item">
-                    <span class="day"><i class="fas fa-calendar-day"></i> Понедельник</span>
-                    <span class="time">18:00 – 19:30</span>
-                    <span class="group">Взрослые (средний уровень)</span>
-                </div>
-                <div class="schedule-item">
-                    <span class="day"><i class="fas fa-calendar-day"></i> Вторник</span>
-                    <span class="time">17:00 – 18:30</span>
-                    <span class="group">Дети 10–14 лет</span>
-                </div>
-                <div class="schedule-item">
-                    <span class="day"><i class="fas fa-calendar-day"></i> Среда</span>
-                    <span class="time">19:00 – 20:30</span>
-                    <span class="group">Взрослые (любой уровень)</span>
-                </div>
-                <div class="schedule-item">
-                    <span class="day"><i class="fas fa-calendar-day"></i> Четверг</span>
-                    <span class="time">16:00 – 17:30</span>
-                    <span class="group">Дети 6–9 лет</span>
-                </div>
-                <div class="schedule-item">
-                    <span class="day"><i class="fas fa-calendar-day"></i> Пятница</span>
-                    <span class="time">18:00 – 19:30</span>
-                    <span class="group">Взрослые (продвинутые)</span>
-                </div>
-                <div class="schedule-item">
-                    <span class="day"><i class="fas fa-calendar-day"></i> Суббота</span>
-                    <span class="time">10:00 – 11:30</span>
-                    <span class="group">Дети 6–9 лет</span>
-                </div>
-                <div class="schedule-item">
-                    <span class="day"><i class="fas fa-calendar-day"></i> Суббота</span>
-                    <span class="time">12:00 – 13:30</span>
-                    <span class="group">Дети 10–14 лет</span>
-                </div>
-                <div class="schedule-item">
-                    <span class="day"><i class="fas fa-calendar-day"></i> Воскресенье</span>
-                    <span class="time">11:00 – 12:30</span>
-                    <span class="group">Взрослые (любой уровень)</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==========================================
     ФОТОГАЛЕРЕЯ
     ========================================== -->
-    <section class="section section-dark" id="gallery">
+    <section class="section section-light" id="gallery">
         <div class="container">
             <h2 class="section-title text-center"><i class="fas fa-images"></i> Фотогалерея</h2>
             <p class="section-subtitle text-center">Моменты с наших тренировок</p>
@@ -1915,9 +2105,77 @@
     </section>
 
     <!-- ==========================================
+    НОВОСТИ — КАРУСЕЛЬ
+    ========================================== -->
+    <section class="news-section" id="news">
+        <div class="container">
+            <h2 class="section-title text-center"><i class="fas fa-newspaper"></i> Новости школы</h2>
+            <p class="section-subtitle text-center">Следите за событиями и достижениями наших учеников</p>
+
+            <div class="news-carousel">
+                <div class="news-track" id="newsTrack">
+                    <div class="news-card">
+                        <img class="news-image" src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&h=400&fit=crop" alt="Победа в турнире">
+                        <div class="news-body">
+                            <div class="news-date"><i class="fas fa-calendar-alt"></i> 15 сентября 2026</div>
+                            <h4>Победа на городском турнире!</h4>
+                            <p>Наша команда «Самарские Орлы» заняла 1 место в ежегодном городском турнире по баскетболу. Поздравляем!</p>
+                            <a href="#" class="news-read-more">Читать далее <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="news-card">
+                        <img class="news-image" src="https://images.unsplash.com/photo-1519861531473-9200262188bf?w=600&h=400&fit=crop" alt="Набор в группы">
+                        <div class="news-body">
+                            <div class="news-date"><i class="fas fa-calendar-alt"></i> 10 сентября 2026</div>
+                            <h4>Открыт набор в новые группы</h4>
+                            <p>Начинаем набор детей 6–9 лет и взрослых 18+. Первое пробное занятие бесплатно. Успейте записаться!</p>
+                            <a href="#signup" class="news-read-more">Записаться <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="news-card">
+                        <img class="news-image" src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&h=400&fit=crop" alt="Спортивный лагерь">
+                        <div class="news-body">
+                            <div class="news-date"><i class="fas fa-calendar-alt"></i> 5 сентября 2026</div>
+                            <h4>Спортивный лагерь — осень 2026</h4>
+                            <p>Объявляем набор на осенний спортивный лагерь для детей 10–16 лет. Тренировки, игры и новые друзья!</p>
+                            <a href="#" class="news-read-more">Читать далее <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="news-card">
+                        <img class="news-image" src="https://images.unsplash.com/photo-1519861531473-9200262188bf?w=600&h=400&fit=crop" alt="День открытых дверей">
+                        <div class="news-body">
+                            <div class="news-date"><i class="fas fa-calendar-alt"></i> 28 августа 2026</div>
+                            <h4>День открытых дверей</h4>
+                            <p>Приходите на День открытых дверей 20 сентября! Знакомство с тренерами, пробные тренировки и скидки.</p>
+                            <a href="#" class="news-read-more">Читать далее <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="news-card">
+                        <img class="news-image" src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&h=400&fit=crop" alt="Выпускной">
+                        <div class="news-body">
+                            <div class="news-date"><i class="fas fa-calendar-alt"></i> 15 августа 2026</div>
+                            <h4>Выпускной наших учеников</h4>
+                            <p>Состоялся выпускной вечер для наших учеников. 25 человек успешно завершили годовой курс обучения.</p>
+                            <a href="#" class="news-read-more">Читать далее <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="carousel-btn prev" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-btn next" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+                <div class="carousel-dots" id="carouselDots"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
     ОТЗЫВЫ
     ========================================== -->
-    <section class="section section-light" id="reviews">
+    <section class="section section-dark" id="reviews">
         <div class="container">
             <h2 class="section-title text-center"><i class="fas fa-comment-dots"></i> Отзывы наших учеников</h2>
             <p class="section-subtitle text-center">Реальные слова благодарности</p>
@@ -1956,7 +2214,7 @@
     <!-- ==========================================
     ЗАПИСЬ (ФОРМА)
     ========================================== -->
-    <section class="section section-dark" id="signup">
+    <section class="section section-light" id="signup">
         <div class="container">
             <h2 class="section-title text-center"><i class="fas fa-pen"></i> Записаться на тренировку</h2>
             <p class="section-subtitle text-center">Оставьте заявку, и мы свяжемся с вами</p>
@@ -1994,26 +2252,24 @@
     <!-- ==========================================
     КОНТАКТЫ
     ========================================== -->
-    <section class="section section-light" id="contacts">
+    <section class="section section-dark" id="contacts">
         <div class="container">
             <h2 class="section-title text-center"><i class="fas fa-map-marker-alt"></i> Контакты</h2>
             <p class="section-subtitle text-center">Всегда на связи</p>
 
             <div class="contact-grid">
+                <!-- Телефон -->
                 <div class="contact-item">
                     <div class="icon"><i class="fas fa-phone-alt"></i></div>
                     <h4>Телефон</h4>
-                    <p><a href="tel:+79991234567">+7 (999) 123-45-67</a></p>
+                    <p><a href="tel:+79171406726">+7 (917) 140-67-26</a></p>
                 </div>
-                <div class="contact-item">
-                    <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
-                    <h4>Адрес</h4>
-                    <p>Самара, ул. Молодогвардейская, 1<br>Спорткомплекс ЦСК ВВС</p>
-                </div>
+
+                <!-- Email -->
                 <div class="contact-item">
                     <div class="icon"><i class="fas fa-envelope"></i></div>
                     <h4>Email</h4>
-                    <p><a href="mailto:info@basketball-samara.ru">info@basketball-samara.ru</a></p>
+                    <p><a href="mailto:legenda_basket@mail.ru">legenda_basket@mail.ru</a></p>
                 </div>
             </div>
         </div>
@@ -2027,20 +2283,20 @@
             <div class="footer-grid">
                 <div>
                     <div class="logo" style="margin-bottom:12px;">
-                        <div class="logo-icon"><i class="fas fa-basketball-ball"></i></div>
+                        <img src="logo_legenda.jpg" alt="Логотип Легенда" style="height:36px; width:auto; border-radius:8px;">
                         <div>
-                            <div class="logo-text" style="font-size:20px; color:#fff;">Баскетбол <span>Самара</span></div>
+                            <div class="logo-text" style="font-size:20px; color:#fff;">Легенда</div>
                         </div>
                     </div>
-                    <p style="font-size:14px;">Тренировки по баскетболу для детей и взрослых в Самаре</p>
+                    <p style="font-size:14px;">Баскетбольная школа для детей и взрослых</p>
                     <div class="footer-phone" style="margin-top:10px;">
                         <i class="fas fa-phone-alt"></i>
-                        <a href="tel:+79991234567" style="color:#fff;">+7 (999) 123-45-67</a>
+                        <a href="tel:+79171406726" style="color:#fff;">+7 (917) 140-67-26</a>
                     </div>
                     <div class="footer-social">
-                        <a href="#"><i class="fab fa-vk"></i></a>
-                        <a href="#"><i class="fab fa-telegram-plane"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="https://vk.ru/public192199445"><i class="fab fa-vk"></i></a>
+                        <a href="https://t.me/basketlegend"><i class="fab fa-telegram-plane"></i></a>
+                        <a href="https://www.instagram.com/legenda_basketball_samara"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
@@ -2048,29 +2304,28 @@
                 <div>
                     <h4>О школе</h4>
                     <a href="#about">О нас</a>
-                    <a href="#coaches">Тренеры</a>
+                    <a href="#halls">Залы</a>
                     <a href="#prices">Цены</a>
                     <a href="#reviews">Отзывы</a>
                 </div>
 
                 <div>
                     <h4>Ученикам</h4>
-                    <a href="#schedule">Расписание</a>
                     <a href="#signup">Записаться</a>
                     <a href="#gallery">Фото</a>
-                    <a href="#">Правила школы</a>
+                    <a href="#news">Новости</a>
                 </div>
 
                 <div>
                     <h4>Контакты</h4>
-                    <a href="mailto:info@basketball-samara.ru">info@basketball-samara.ru</a>
+                    <a href="mailto:legenda_basket@mail.ru">legenda_basket@mail.ru</a>
                     <a href="#">Самара, ЦСК ВВС</a>
                     <a href="#">Политика конфиденциальности</a>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                <span>© 2026 Баскетбол Самара. Все права защищены.</span>
+                <span>© 2026 Легенда. Все права защищены.</span>
                 <span>Сделано с <span class="heart"><i class="fas fa-heart"></i></span> для баскетбола</span>
             </div>
         </div>
@@ -2123,7 +2378,6 @@
                 ctx.fill();
             });
 
-            // Соединения
             for (let i = 0; i < particles.length; i++) {
                 for (let j = i + 1; j < particles.length; j++) {
                     const dx = particles[i].x - particles[j].x;
@@ -2222,7 +2476,7 @@
         });
 
         // =====================
-        // 6. АНИМАЦИЯ ЦИФР (счётчик)
+        // 6. АНИМАЦИЯ ЦИФР
         // =====================
         function animateCounter(el) {
             const target = parseInt(el.getAttribute('data-count'));
@@ -2238,7 +2492,6 @@
             }, 30);
         }
 
-        // Запускаем анимацию при появлении в зоне видимости
         const statsObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -2253,7 +2506,90 @@
         if (heroStats) statsObserver.observe(heroStats);
 
         // =====================
-        // 7. ОТПРАВКА ФОРМЫ
+        // 7. КАРУСЕЛЬ НОВОСТЕЙ
+        // =====================
+        const track = document.getElementById('newsTrack');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const dotsContainer = document.getElementById('carouselDots');
+
+        if (track) {
+            const cards = track.querySelectorAll('.news-card');
+            const cardWidth = cards[0]?.offsetWidth || 0;
+            let currentIndex = 0;
+            let visibleCount = 1;
+
+            function getVisibleCount() {
+                if (window.innerWidth >= 1024) return 3;
+                if (window.innerWidth >= 768) return 2;
+                return 1;
+            }
+
+            visibleCount = getVisibleCount();
+            const totalSlides = Math.max(1, cards.length - visibleCount + 1);
+
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('button');
+                dot.className = 'dot' + (i === 0 ? ' active' : '');
+                dot.dataset.index = i;
+                dot.addEventListener('click', () => goToSlide(i));
+                dotsContainer.appendChild(dot);
+            }
+
+            function goToSlide(index) {
+                if (index < 0) index = totalSlides - 1;
+                if (index >= totalSlides) index = 0;
+                currentIndex = index;
+
+                const gap = 30;
+                const cardFullWidth = cards[0]?.offsetWidth + gap || 0;
+                const offset = currentIndex * cardFullWidth;
+                track.style.transform = `translateX(-${offset}px)`;
+
+                document.querySelectorAll('.dot').forEach((dot, i) => {
+                    dot.classList.toggle('active', i === currentIndex);
+                });
+            }
+
+            prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
+            nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
+
+            let autoplayInterval = setInterval(() => goToSlide(currentIndex + 1), 5000);
+
+            const carousel = document.querySelector('.news-carousel');
+            carousel.addEventListener('mouseenter', () => clearInterval(autoplayInterval));
+            carousel.addEventListener('mouseleave', () => {
+                autoplayInterval = setInterval(() => goToSlide(currentIndex + 1), 5000);
+            });
+
+            let resizeTimeout;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(() => {
+                    const newVisible = getVisibleCount();
+                    if (newVisible !== visibleCount) {
+                        visibleCount = newVisible;
+                        const newTotal = Math.max(1, cards.length - visibleCount + 1);
+                        dotsContainer.innerHTML = '';
+                        for (let i = 0; i < newTotal; i++) {
+                            const dot = document.createElement('button');
+                            dot.className = 'dot' + (i === 0 ? ' active' : '');
+                            dot.dataset.index = i;
+                            dot.addEventListener('click', () => goToSlide(i));
+                            dotsContainer.appendChild(dot);
+                        }
+                        goToSlide(0);
+                    }
+                    const gap = 30;
+                    const cardFullWidth = cards[0]?.offsetWidth + gap || 0;
+                    const offset = currentIndex * cardFullWidth;
+                    track.style.transform = `translateX(-${offset}px)`;
+                }, 300);
+            });
+        }
+
+        // =====================
+        // 8. ОТПРАВКА ФОРМЫ
         // =====================
         document.getElementById('signupForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -2262,7 +2598,7 @@
         });
 
         // =====================
-        // 8. ПАРАЛЛАКС ДЛЯ БАЛЛОВ
+        // 9. ПАРАЛЛАКС ДЛЯ БАЛЛОВ
         // =====================
         document.addEventListener('mousemove', function(e) {
             const balls = document.querySelectorAll('.hero-balls span');
