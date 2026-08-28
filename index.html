@@ -707,90 +707,149 @@
         }
 
         /* ==========================================
-                   ЗАЛЫ
+                   ЗАЛЫ — КАРУСЕЛЬ (15 залов)
                 ========================================== */
-        .halls-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+        .halls-carousel-section {
+            background: #ffffff;
+            padding: 80px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .halls-carousel {
+            position: relative;
+            overflow: hidden;
+            padding: 10px 0 20px;
+        }
+
+        .halls-track {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
             gap: 30px;
         }
 
-        .hall-card {
+        .hall-slide {
+            min-width: calc(33.333% - 20px);
             background: #fff;
             border-radius: 24px;
             overflow: hidden;
             border: 1px solid rgba(0, 0, 0, 0.04);
             transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-            position: relative;
+            flex-shrink: 0;
         }
 
-        .hall-card:hover {
+        .hall-slide:hover {
             transform: translateY(-8px);
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
         }
 
-        .hall-card .hall-image {
+        .hall-slide .hall-image {
             width: 100%;
-            height: 220px;
+            height: 240px;
             object-fit: cover;
             transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        .hall-card:hover .hall-image {
+        .hall-slide:hover .hall-image {
             transform: scale(1.04);
         }
 
-        .hall-card .hall-body {
-            padding: 24px 28px 28px;
+        .hall-slide .hall-body {
+            padding: 20px 24px 24px;
         }
 
-        .hall-card .hall-icon {
-            font-size: 28px;
+        .hall-slide .hall-icon {
+            font-size: 24px;
             color: #ff8c42;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
         }
 
-        .hall-card h4 {
-            font-size: 20px;
+        .hall-slide h4 {
+            font-size: 18px;
             font-weight: 700;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
             color: #0b1a2e;
         }
 
-        .hall-card .hall-address {
+        .hall-slide .hall-address {
             color: #64748b;
             font-size: 14px;
             display: flex;
             align-items: center;
             gap: 8px;
-            margin-bottom: 4px;
         }
 
-        .hall-card .hall-address i {
+        .hall-slide .hall-address i {
             color: #ff8c42;
             width: 18px;
         }
 
-        .hall-card .hall-features {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px 14px;
-            margin-top: 12px;
-            padding-top: 12px;
-            border-top: 1px solid #e9edf2;
-        }
-
-        .hall-card .hall-features span {
-            font-size: 13px;
-            color: #475569;
+        /* Кнопки навигации карусели залов */
+        .halls-carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.95);
+            border: 3px solid #ff8c42;
+            color: #ff8c42;
+            font-size: 22px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+            z-index: 10;
             display: flex;
             align-items: center;
-            gap: 6px;
+            justify-content: center;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
         }
 
-        .hall-card .hall-features span i {
-            color: #ff8c42;
-            font-size: 12px;
+        .halls-carousel-btn:hover {
+            background: #ff8c42;
+            color: #fff;
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 8px 40px rgba(255, 140, 66, 0.5);
+            border-color: #ff8c42;
+        }
+
+        .halls-carousel-btn.prev {
+            left: -20px;
+        }
+
+        .halls-carousel-btn.next {
+            right: -20px;
+        }
+
+        /* Индикаторы для залов */
+        .halls-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 24px;
+        }
+
+        .halls-dots .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #d1d9e6;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .halls-dots .dot.active {
+            background: #ff8c42;
+            transform: scale(1.3);
+            box-shadow: 0 4px 16px rgba(255, 140, 66, 0.3);
+        }
+
+        .halls-dots .dot:hover {
+            transform: scale(1.2);
+            background: #ff8c42;
         }
 
         /* ==========================================
@@ -1202,6 +1261,7 @@
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23475569' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 16px center;
+            padding-right: 40px;
         }
 
         .form-wrap .btn {
@@ -1736,18 +1796,12 @@
     ГЕРОЙ
     ========================================== -->
     <section class="hero" id="hero">
-        <!-- ФОНОВОЕ ИЗОБРАЖЕНИЕ НА ВЕСЬ ЭКРАН -->
         <img class="hero-bg" src="hero_team.jpg" alt="Баскетбольный клуб Легенда">
-        
-        <!-- ТЁМНОЕ ЗАТЕМНЕНИЕ -->
         <div class="hero-overlay"></div>
 
         <div class="container">
-            <!-- ЛЕВАЯ ЧАСТЬ — КОНТЕНТ -->
             <div class="hero-content">
-                <div class="hero-badge">
-                    <i class="fas fa-fire"></i> Набор открыт
-                </div>
+                <div class="hero-badge"><i class="fas fa-fire"></i> Набор открыт</div>
                 <h1>Баскетбольный клуб <span>Легенда</span></h1>
                 <p>Индивидуальные и групповые занятия для детей от 6 лет и взрослых. Опытные тренеры, удобный график.</p>
                 <div class="hero-buttons">
@@ -1755,25 +1809,12 @@
                     <a href="#about" class="btn btn-outline"><i class="fas fa-info-circle"></i> Подробнее</a>
                 </div>
                 <div class="hero-stats">
-                    <div class="stat">
-                        <span class="stat-number"><span data-count="1000">0</span>+</span>
-                        <span class="stat-label">Спортсменов</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number"><span data-count="15">0</span>+</span>
-                        <span class="stat-label">Зал</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number"><span data-count="15">0</span></span>
-                        <span class="stat-label">Тренеров</span>
-                    </div>
+                    <div class="stat"><span class="stat-number"><span data-count="1000">0</span>+</span><span class="stat-label">Спортсменов</span></div>
+                    <div class="stat"><span class="stat-number"><span data-count="15">0</span>+</span><span class="stat-label">Зал</span></div>
+                    <div class="stat"><span class="stat-number"><span data-count="15">0</span></span><span class="stat-label">Тренеров</span></div>
                 </div>
             </div>
-
-            <!-- ПРАВАЯ ЧАСТЬ — ЛОГОТИП -->
-            <div class="hero-logo">
-                <img src="logo_legenda.jpg" alt="Логотип Легенда">
-            </div>
+            <div class="hero-logo"><img src="logo_legenda.jpg" alt="Логотип Легенда"></div>
         </div>
     </section>
 
@@ -1784,23 +1825,10 @@
         <div class="container">
             <h2 class="section-title text-center"><i class="fas fa-star"></i> Почему выбирают нас</h2>
             <p class="section-subtitle text-center">Мы создаём комфортную среду для роста и развития</p>
-
             <div class="features-grid">
-                <div class="feature-card">
-                    <div class="icon"><i class="fas fa-user-graduate"></i></div>
-                    <h3>Опытные тренеры</h3>
-                    <p>Мастера спорта с многолетним опытом работы с детьми и взрослыми</p>
-                </div>
-                <div class="feature-card">
-                    <div class="icon"><i class="fas fa-clock"></i></div>
-                    <h3>Удобное расписание</h3>
-                    <p>Занятия в утреннее, дневное и вечернее время. 7 дней в неделю</p>
-                </div>
-                <div class="feature-card">
-                    <div class="icon"><i class="fas fa-users"></i></div>
-                    <h3>Все уровни подготовки</h3>
-                    <p>Группы для начинающих, продвинутых и профессионалов</p>
-                </div>
+                <div class="feature-card"><div class="icon"><i class="fas fa-user-graduate"></i></div><h3>Опытные тренеры</h3><p>Мастера спорта с многолетним опытом работы с детьми и взрослыми</p></div>
+                <div class="feature-card"><div class="icon"><i class="fas fa-clock"></i></div><h3>Удобное расписание</h3><p>Занятия в утреннее, дневное и вечернее время. 7 дней в неделю</p></div>
+                <div class="feature-card"><div class="icon"><i class="fas fa-users"></i></div><h3>Все уровни подготовки</h3><p>Группы для начинающих, продвинутых и профессионалов</p></div>
             </div>
         </div>
     </section>
@@ -1822,75 +1850,205 @@
                         <li><i class="fas fa-check-circle"></i> Дружелюбная атмосфера и поддержка</li>
                     </ul>
                 </div>
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1519861531473-9200262188bf?w=600&h=450&fit=crop&crop=center" alt="Баскетбольный клуб Легенда">
-                </div>
+                <div class="about-image"><img src="https://images.unsplash.com/photo-1519861531473-9200262188bf?w=600&h=450&fit=crop&crop=center" alt="Баскетбольный клуб Легенда"></div>
             </div>
         </div>
     </section>
 
     <!-- ==========================================
-    ЗАЛЫ
+    ЗАЛЫ — КАРУСЕЛЬ (15 залов)
     ========================================== -->
-    <section class="section section-light" id="halls">
+    <section class="halls-carousel-section" id="halls">
         <div class="container">
             <h2 class="section-title text-center"><i class="fas fa-building"></i> Наши залы</h2>
-            <p class="section-subtitle text-center">Современные площадки для комфортных тренировок</p>
+            <p class="section-subtitle text-center">Оставьте заявку. Мы с вами свяжемся и подберем для вас удобный зал</p>
 
-            <div class="halls-grid">
-                <!-- ЗАЛ 1 -->
-                <div class="hall-card">
-                    <img class="hall-image" src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&h=400&fit=crop" alt="Спорткомплекс ЦСК ВВС">
-                    <div class="hall-body">
-                        <div class="hall-icon"><i class="fas fa-basketball-ball"></i></div>
-                        <h4>ЦСК ВВС</h4>
-                        <div class="hall-address">
-                            <i class="fas fa-map-marker-alt"></i> ул. Молодогвардейская, 1
+            <div class="halls-carousel">
+                <div class="halls-track" id="hallsTrack">
+                    <!-- ЗАЛ 1 -->
+                    <div class="hall-slide">
+                        <img class="hall-image" src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&h=400&fit=crop" alt="Дворец Спорта им. Владимира Высоцкого">
+                        <div class="hall-body">
+                            <div class="hall-icon"><i class="fas fa-basketball-ball"></i></div>
+                            <h4>Дворец Спорта им. Владимира Высоцкого</h4>
+                            <div class="hall-address">
+                                <i class="fas fa-map-marker-alt"></i> ул. Молодогвардейская, 222
+                            </div>
                         </div>
-                        <div class="hall-features">
-                            <span><i class="fas fa-check-circle"></i> 2 площадки</span>
-                            <span><i class="fas fa-check-circle"></i> Трибуны</span>
-                            <span><i class="fas fa-check-circle"></i> Раздевалки</span>
-                            <span><i class="fas fa-check-circle"></i> Душ</span>
+                    </div>
+
+                    <!-- ЗАЛ 2 -->
+                    <div class="hall-slide">
+                        <img class="hall-image" src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&h=400&fit=crop" alt="СК СамГУПС">
+                        <div class="hall-body">
+                            <div class="hall-icon"><i class="fas fa-basketball-ball"></i></div>
+                            <h4>СК "СамГУПС"</h4>
+                            <div class="hall-address">
+                                <i class="fas fa-map-marker-alt"></i> ул. Свободы, 2В
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ЗАЛ 3 -->
+                    <div class="hall-slide">
+                        <img class="hall-image" src="https://images.unsplash.com/photo-1519861531473-9200262188bf?w=600&h=400&fit=crop" alt="СК 7 Кортов">
+                        <div class="hall-body">
+                            <div class="hall-icon"><i class="fas fa-basketball-ball"></i></div>
+                            <h4>СК "7 Кортов"</h4>
+                            <div class="hall-address">
+                                <i class="fas fa-map-marker-alt"></i> ул. Алма-Атинская 29, корпус 70
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ЗАЛ 4 -->
+                    <div class="hall-slide">
+                        <img class="hall-image" src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&h=400&fit=crop" alt="ФСК Волжский">
+                        <div class="hall-body">
+                            <div class="hall-icon"><i class="fas fa-basketball-ball"></i></div>
+                            <h4>ФСК «Волжский»</h4>
+                            <div class="hall-address">
+                                <i class="fas fa-map-marker-alt"></i> ул. Нестора Постникова, 5, п. г. т. Стройкерамика
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ЗАЛ 5 -->
+                    <div class="hall-slide">
+                        <img class="hall-image" src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&h=400&fit=crop" alt="СК Кристалл">
+                        <div class="hall-body">
+                            <div class="hall-icon"><i class="fas fa-basketball-ball"></i></div>
+                            <h4>СК "Кристалл"</h4>
+                            <div class="hall-address">
+                                <i class="fas fa-map-marker-alt"></i> посёлок Мехзавод, 1-й квартал, 30
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ЗАЛ 6 -->
+                    <div class="hall-slide">
+                        <img class="hall-image" src="https://images.unsplash.com/photo-1519861531473-9200262188bf?w=600&h=400&fit=crop" alt="Гимназия № 11">
+                        <div class="hall-body">
+                            <div class="hall-icon"><i class="fas fa-basketball-ball"></i></div>
+                            <h4>Гимназия № 11</h4>
+                            <div class="hall-address">
+                                <i class="fas fa-map-marker-alt"></i> ул. Чапаевская, 214
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ЗАЛ 7 -->
+                    <div class="hall-slide">
+                        <img class="hall-image" src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&h=400&fit=crop" alt="ФСК Факел">
+                        <div class="hall-body">
+                            <div class="hall-icon"><i class="fas fa-basketball-ball"></i></div>
+                            <h4>ФСК «Факел»</h4>
+                            <div class="hall-address">
+                                <i class="fas fa-map-marker-alt"></i> г. Нефтегорск, ул. Буровиков, 4А
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ЗАЛ 8 -->
+                    <div class="hall-slide">
+                        <img class="hall-image" src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&h=400&fit=crop" alt="Дом физкультуры">
+                        <div class="hall-body">
+                            <div class="hall-icon"><i class="fas fa-basketball-ball"></i></div>
+                            <h4>Дом физкультуры</h4>
+                            <div class="hall-address">
+                                <i class="fas fa-map-marker-alt"></i> ул. Ново-Садовая 16
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ЗАЛ 9 -->
+                    <div class="hall-slide">
+                        <img class="hall-image" src="https://images.unsplash.com/photo-1519861531473-9200262188bf?w=600&h=400&fit=crop" alt="ЦСК ВВС">
+                        <div class="hall-body">
+                            <div class="hall-icon"><i class="fas fa-basketball-ball"></i></div>
+                            <h4>ЦСК ВВС</h4>
+                            <div class="hall-address">
+                                <i class="fas fa-map-marker-alt"></i> ул. Стара-Загора, 143А
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ЗАЛ 10 -->
+                    <div class="hall-slide">
+                        <img class="hall-image" src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&h=400&fit=crop" alt="СК Старт">
+                        <div class="hall-body">
+                            <div class="hall-icon"><i class="fas fa-basketball-ball"></i></div>
+                            <h4>СК "Старт"</h4>
+                            <div class="hall-address">
+                                <i class="fas fa-map-marker-alt"></i> ул. 22-го Партсъезда, 1Б
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ЗАЛ 11 -->
+                    <div class="hall-slide">
+                        <img class="hall-image" src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&h=400&fit=crop" alt="Волгарь Арена">
+                        <div class="hall-body">
+                            <div class="hall-icon"><i class="fas fa-basketball-ball"></i></div>
+                            <h4>Волгарь Арена</h4>
+                            <div class="hall-address">
+                                <i class="fas fa-map-marker-alt"></i> жилой район Волгарь, ул. Нижнегородская, 16А
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ЗАЛ 12 -->
+                    <div class="hall-slide">
+                        <img class="hall-image" src="https://images.unsplash.com/photo-1519861531473-9200262188bf?w=600&h=400&fit=crop" alt="Зал на ул. Степана Разина">
+                        <div class="hall-body">
+                            <div class="hall-icon"><i class="fas fa-basketball-ball"></i></div>
+                            <h4>Зал на ул. Степана Разина</h4>
+                            <div class="hall-address">
+                                <i class="fas fa-map-marker-alt"></i> ул. Степана Разина
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ЗАЛ 13 -->
+                    <div class="hall-slide">
+                        <img class="hall-image" src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&h=400&fit=crop" alt="Зал на ул. Стара-Загора">
+                        <div class="hall-body">
+                            <div class="hall-icon"><i class="fas fa-basketball-ball"></i></div>
+                            <h4>Зал на ул. Стара-Загора</h4>
+                            <div class="hall-address">
+                                <i class="fas fa-map-marker-alt"></i> ул. Стара-Загора
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ЗАЛ 14 -->
+                    <div class="hall-slide">
+                        <img class="hall-image" src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&h=400&fit=crop" alt="Глория">
+                        <div class="hall-body">
+                            <div class="hall-icon"><i class="fas fa-basketball-ball"></i></div>
+                            <h4>Глория</h4>
+                            <div class="hall-address">
+                                <i class="fas fa-map-marker-alt"></i> ул. Чемпионская, 5
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ЗАЛ 15 -->
+                    <div class="hall-slide">
+                        <img class="hall-image" src="https://images.unsplash.com/photo-1519861531473-9200262188bf?w=600&h=400&fit=crop" alt="Легенда Арена">
+                        <div class="hall-body">
+                            <div class="hall-icon"><i class="fas fa-basketball-ball"></i></div>
+                            <h4>Легенда Арена</h4>
+                            <div class="hall-address">
+                                <i class="fas fa-map-marker-alt"></i> ул. Баскетбольная, 1
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- ЗАЛ 2 -->
-                <div class="hall-card">
-                    <img class="hall-image" src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&h=400&fit=crop" alt="Спорткомплекс Локомотив">
-                    <div class="hall-body">
-                        <div class="hall-icon"><i class="fas fa-basketball-ball"></i></div>
-                        <h4>Локомотив</h4>
-                        <div class="hall-address">
-                            <i class="fas fa-map-marker-alt"></i> ул. Аэродромная, 16
-                        </div>
-                        <div class="hall-features">
-                            <span><i class="fas fa-check-circle"></i> 1 площадка</span>
-                            <span><i class="fas fa-check-circle"></i> Трибуны</span>
-                            <span><i class="fas fa-check-circle"></i> Раздевалки</span>
-                            <span><i class="fas fa-check-circle"></i> Душ</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ЗАЛ 3 -->
-                <div class="hall-card">
-                    <img class="hall-image" src="https://images.unsplash.com/photo-1519861531473-9200262188bf?w=600&h=400&fit=crop" alt="Спорткомплекс Металлург">
-                    <div class="hall-body">
-                        <div class="hall-icon"><i class="fas fa-basketball-ball"></i></div>
-                        <h4>Металлург</h4>
-                        <div class="hall-address">
-                            <i class="fas fa-map-marker-alt"></i> пр. Кирова, 20
-                        </div>
-                        <div class="hall-features">
-                            <span><i class="fas fa-check-circle"></i> 1 площадка</span>
-                            <span><i class="fas fa-check-circle"></i> Тренажёрный зал</span>
-                            <span><i class="fas fa-check-circle"></i> Раздевалки</span>
-                            <span><i class="fas fa-check-circle"></i> Душ</span>
-                        </div>
-                    </div>
-                </div>
+                <button class="halls-carousel-btn prev" id="hallsPrevBtn"><i class="fas fa-chevron-left"></i></button>
+                <button class="halls-carousel-btn next" id="hallsNextBtn"><i class="fas fa-chevron-right"></i></button>
+                <div class="halls-dots" id="hallsDots"></div>
             </div>
         </div>
     </section>
@@ -1902,68 +2060,12 @@
         <div class="container">
             <h2 class="section-title text-center"><i class="fas fa-ruble-sign"></i> Цены на тренировки</h2>
             <p class="section-subtitle text-center">Выберите подходящий формат занятий</p>
-
             <div class="prices-grid">
-                <!-- КАРТОЧКА 1 — ПРОБНОЕ ЗАНЯТИЕ -->
-                <div class="price-card">
-                    <h3>Пробное занятие</h3>
-                    <div class="price">БЕСПЛАТНО</div>
-                    <ul>
-                        <li><i class="fas fa-check"></i> 60 минут</li>
-                        <li><i class="fas fa-check"></i> Индивидуальный подход</li>
-                        <li><i class="fas fa-check"></i> Оценка уровня</li>
-                    </ul>
-                    <a href="#signup" class="btn btn-primary">Записаться</a>
-                </div>
-
-                <!-- КАРТОЧКА 2 — АБОНЕМЕНТ (ПОПУЛЯРНЫЙ) -->
-                <div class="price-card popular">
-                    <div class="badge">🔥 Популярное</div>
-                    <h3>Абонемент на месяц</h3>
-                    <div class="price">4 500 <span>₽</span></div>
-                    <ul>
-                        <li><i class="fas fa-check"></i> 8 занятий в месяц</li>
-                        <li><i class="fas fa-check"></i> Групповые тренировки</li>
-                        <li><i class="fas fa-check"></i> Доступ к спортзалу</li>
-                    </ul>
-                    <a href="#signup" class="btn btn-primary">Записаться</a>
-                </div>
-
-                <!-- КАРТОЧКА 3 — ИГРОВЫЕ ДНИ -->
-                <div class="price-card">
-                    <h3>Игровые дни</h3>
-                    <div class="price">500 <span>₽</span></div>
-                    <ul>
-                        <li><i class="fas fa-check"></i> 1,5 часа игры</li>
-                        <li><i class="fas fa-check"></i> Командные матчи</li>
-                        <li><i class="fas fa-check"></i> Судейство</li>
-                    </ul>
-                    <a href="#signup" class="btn btn-primary">Записаться</a>
-                </div>
-
-                <!-- КАРТОЧКА 4 — РАЗОВОЕ ПОСЕЩЕНИЕ -->
-                <div class="price-card">
-                    <h3>Разовое посещение</h3>
-                    <div class="price">600 <span>₽</span></div>
-                    <ul>
-                        <li><i class="fas fa-check"></i> 1 тренировка</li>
-                        <li><i class="fas fa-check"></i> Групповая тренировка</li>
-                        <li><i class="fas fa-check"></i> Удобное время</li>
-                    </ul>
-                    <a href="#signup" class="btn btn-primary">Записаться</a>
-                </div>
-
-                <!-- КАРТОЧКА 5 — ИНДИВИДУАЛЬНО -->
-                <div class="price-card">
-                    <h3>Индивидуально</h3>
-                    <div class="price">от 1 500 <span>₽/час</span></div>
-                    <ul>
-                        <li><i class="fas fa-check"></i> Индивидуальный план</li>
-                        <li><i class="fas fa-check"></i> Работа над ошибками</li>
-                        <li><i class="fas fa-check"></i> Гибкий график</li>
-                    </ul>
-                    <a href="#signup" class="btn btn-primary">Записаться</a>
-                </div>
+                <div class="price-card"><h3>Пробное занятие</h3><div class="price">БЕСПЛАТНО</div><ul><li><i class="fas fa-check"></i> 60 минут</li><li><i class="fas fa-check"></i> Индивидуальный подход</li><li><i class="fas fa-check"></i> Оценка уровня</li></ul><a href="#signup" class="btn btn-primary">Записаться</a></div>
+                <div class="price-card popular"><div class="badge">🔥 Популярное</div><h3>Абонемент на месяц</h3><div class="price">4 500 <span>₽</span></div><ul><li><i class="fas fa-check"></i> 8 занятий в месяц</li><li><i class="fas fa-check"></i> Групповые тренировки</li><li><i class="fas fa-check"></i> Доступ к спортзалу</li></ul><a href="#signup" class="btn btn-primary">Записаться</a></div>
+                <div class="price-card"><h3>Игровые дни</h3><div class="price">500 <span>₽</span></div><ul><li><i class="fas fa-check"></i> 1,5 часа игры</li><li><i class="fas fa-check"></i> Командные матчи</li><li><i class="fas fa-check"></i> Судейство</li></ul><a href="#signup" class="btn btn-primary">Записаться</a></div>
+                <div class="price-card"><h3>Разовое посещение</h3><div class="price">600 <span>₽</span></div><ul><li><i class="fas fa-check"></i> 1 тренировка</li><li><i class="fas fa-check"></i> Групповая тренировка</li><li><i class="fas fa-check"></i> Удобное время</li></ul><a href="#signup" class="btn btn-primary">Записаться</a></div>
+                <div class="price-card"><h3>Индивидуально</h3><div class="price">от 1 500 <span>₽/час</span></div><ul><li><i class="fas fa-check"></i> Индивидуальный план</li><li><i class="fas fa-check"></i> Работа над ошибками</li><li><i class="fas fa-check"></i> Гибкий график</li></ul><a href="#signup" class="btn btn-primary">Записаться</a></div>
             </div>
         </div>
     </section>
@@ -1975,20 +2077,11 @@
         <div class="container">
             <h2 class="section-title text-center"><i class="fas fa-images"></i> Фотогалерея</h2>
             <p class="section-subtitle text-center">Моменты с наших тренировок</p>
-
             <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&h=400&fit=crop" alt="Тренировка по баскетболу" loading="lazy">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&h=400&fit=crop" alt="Игрок бросает мяч" loading="lazy">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1519861531473-9200262188bf?w=600&h=400&fit=crop" alt="Детская тренировка по баскетболу" loading="lazy">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&h=400&fit=crop&crop=center" alt="Баскетбольная площадка" loading="lazy">
-                </div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&h=400&fit=crop" alt="Тренировка по баскетболу" loading="lazy"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&h=400&fit=crop" alt="Игрок бросает мяч" loading="lazy"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1519861531473-9200262188bf?w=600&h=400&fit=crop" alt="Детская тренировка по баскетболу" loading="lazy"></div>
+                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&h=400&fit=crop&crop=center" alt="Баскетбольная площадка" loading="lazy"></div>
             </div>
         </div>
     </section>
@@ -2000,60 +2093,14 @@
         <div class="container">
             <h2 class="section-title text-center"><i class="fas fa-newspaper"></i> Новости школы</h2>
             <p class="section-subtitle text-center">Следите за событиями и достижениями наших учеников</p>
-
             <div class="news-carousel">
                 <div class="news-track" id="newsTrack">
-                    <div class="news-card">
-                        <img class="news-image" src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&h=400&fit=crop" alt="Победа в турнире">
-                        <div class="news-body">
-                            <div class="news-date"><i class="fas fa-calendar-alt"></i> 15 сентября 2026</div>
-                            <h4>Победа на городском турнире!</h4>
-                            <p>Наша команда «Самарские Орлы» заняла 1 место в ежегодном городском турнире по баскетболу. Поздравляем!</p>
-                            <a href="#" class="news-read-more">Читать далее <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="news-card">
-                        <img class="news-image" src="https://images.unsplash.com/photo-1519861531473-9200262188bf?w=600&h=400&fit=crop" alt="Набор в группы">
-                        <div class="news-body">
-                            <div class="news-date"><i class="fas fa-calendar-alt"></i> 10 сентября 2026</div>
-                            <h4>Открыт набор в новые группы</h4>
-                            <p>Начинаем набор детей 6–9 лет и взрослых 18+. Первое пробное занятие бесплатно. Успейте записаться!</p>
-                            <a href="#signup" class="news-read-more">Записаться <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="news-card">
-                        <img class="news-image" src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&h=400&fit=crop" alt="Спортивный лагерь">
-                        <div class="news-body">
-                            <div class="news-date"><i class="fas fa-calendar-alt"></i> 5 сентября 2026</div>
-                            <h4>Спортивный лагерь — осень 2026</h4>
-                            <p>Объявляем набор на осенний спортивный лагерь для детей 10–16 лет. Тренировки, игры и новые друзья!</p>
-                            <a href="#" class="news-read-more">Читать далее <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="news-card">
-                        <img class="news-image" src="https://images.unsplash.com/photo-1519861531473-9200262188bf?w=600&h=400&fit=crop" alt="День открытых дверей">
-                        <div class="news-body">
-                            <div class="news-date"><i class="fas fa-calendar-alt"></i> 28 августа 2026</div>
-                            <h4>День открытых дверей</h4>
-                            <p>Приходите на День открытых дверей 20 сентября! Знакомство с тренерами, пробные тренировки и скидки.</p>
-                            <a href="#" class="news-read-more">Читать далее <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="news-card">
-                        <img class="news-image" src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&h=400&fit=crop" alt="Выпускной">
-                        <div class="news-body">
-                            <div class="news-date"><i class="fas fa-calendar-alt"></i> 15 августа 2026</div>
-                            <h4>Выпускной наших учеников</h4>
-                            <p>Состоялся выпускной вечер для наших учеников. 25 человек успешно завершили годовой курс обучения.</p>
-                            <a href="#" class="news-read-more">Читать далее <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
+                    <div class="news-card"><img class="news-image" src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&h=400&fit=crop" alt="Победа в турнире"><div class="news-body"><div class="news-date"><i class="fas fa-calendar-alt"></i> 15 сентября 2026</div><h4>Победа на городском турнире!</h4><p>Наша команда «Самарские Орлы» заняла 1 место в ежегодном городском турнире по баскетболу. Поздравляем!</p><a href="#" class="news-read-more">Читать далее <i class="fas fa-arrow-right"></i></a></div></div>
+                    <div class="news-card"><img class="news-image" src="https://images.unsplash.com/photo-1519861531473-9200262188bf?w=600&h=400&fit=crop" alt="Набор в группы"><div class="news-body"><div class="news-date"><i class="fas fa-calendar-alt"></i> 10 сентября 2026</div><h4>Открыт набор в новые группы</h4><p>Начинаем набор детей 6–9 лет и взрослых 18+. Первое пробное занятие бесплатно. Успейте записаться!</p><a href="#signup" class="news-read-more">Записаться <i class="fas fa-arrow-right"></i></a></div></div>
+                    <div class="news-card"><img class="news-image" src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&h=400&fit=crop" alt="Спортивный лагерь"><div class="news-body"><div class="news-date"><i class="fas fa-calendar-alt"></i> 5 сентября 2026</div><h4>Спортивный лагерь — осень 2026</h4><p>Объявляем набор на осенний спортивный лагерь для детей 10–16 лет. Тренировки, игры и новые друзья!</p><a href="#" class="news-read-more">Читать далее <i class="fas fa-arrow-right"></i></a></div></div>
+                    <div class="news-card"><img class="news-image" src="https://images.unsplash.com/photo-1519861531473-9200262188bf?w=600&h=400&fit=crop" alt="День открытых дверей"><div class="news-body"><div class="news-date"><i class="fas fa-calendar-alt"></i> 28 августа 2026</div><h4>День открытых дверей</h4><p>Приходите на День открытых дверей 20 сентября! Знакомство с тренерами, пробные тренировки и скидки.</p><a href="#" class="news-read-more">Читать далее <i class="fas fa-arrow-right"></i></a></div></div>
+                    <div class="news-card"><img class="news-image" src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&h=400&fit=crop" alt="Выпускной"><div class="news-body"><div class="news-date"><i class="fas fa-calendar-alt"></i> 15 августа 2026</div><h4>Выпускной наших учеников</h4><p>Состоялся выпускной вечер для наших учеников. 25 человек успешно завершили годовой курс обучения.</p><a href="#" class="news-read-more">Читать далее <i class="fas fa-arrow-right"></i></a></div></div>
                 </div>
-
                 <button class="carousel-btn prev" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
                 <button class="carousel-btn next" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
                 <div class="carousel-dots" id="carouselDots"></div>
@@ -2068,31 +2115,51 @@
         <div class="container">
             <h2 class="section-title text-center"><i class="fas fa-pen"></i> Записаться на тренировку</h2>
             <p class="section-subtitle text-center">Оставьте заявку, и мы свяжемся с вами</p>
-
             <div class="form-wrap">
                 <form action="#" method="POST" id="signupForm" onsubmit="sendForm(event)">
                     <div class="form-group">
                         <label for="name"><i class="fas fa-user"></i> Имя и Фамилия</label>
                         <input type="text" id="name" name="name" placeholder="Иван Петров" required>
                     </div>
+                    
                     <div class="form-group">
                         <label for="phone"><i class="fas fa-phone-alt"></i> Телефон</label>
                         <input type="tel" id="phone" name="phone" placeholder="+7 (999) 123-45-67" required>
                     </div>
+                    
                     <div class="form-group">
                         <label for="age"><i class="fas fa-calendar"></i> Возраст ученика</label>
-                        <select id="age" name="age">
-                            <option value="6-9">6–9 лет</option>
-                            <option value="10-14">10–14 лет</option>
-                            <option value="15-17">15–17 лет</option>
-                            <option value="18-40">18–40 лет</option>
-                            <option value="40+">40+ лет</option>
+                        <input type="text" id="age" name="age" placeholder="Например: 12 лет" required>
+                    </div>
+
+                    <!-- ПОЛЕ: Какой адрес вас устраивает? -->
+                    <div class="form-group">
+                        <label for="address"><i class="fas fa-map-marker-alt"></i> Какой адрес вас устраивает?</label>
+                        <select id="address" name="address">
+                            <option value="">Выберите зал...</option>
+                            <option value="ул. Молодогвардейская, 222 — Дворец Спорта им. Владимира Высоцкого">Дворец Спорта им. Владимира Высоцкого (ул. Молодогвардейская, 222)</option>
+                            <option value="ул. Свободы, 2В — СК СамГУПС">СК "СамГУПС" (ул. Свободы, 2В)</option>
+                            <option value="ул. Алма-Атинская 29, корпус 70 — СК 7 Кортов">СК "7 Кортов" (ул. Алма-Атинская 29, корпус 70)</option>
+                            <option value="ул. Нестора Постникова, 5 — ФСК Волжский">ФСК «Волжский» (ул. Нестора Постникова, 5)</option>
+                            <option value="посёлок Мехзавод, 1-й квартал, 30 — СК Кристалл">СК "Кристалл" (посёлок Мехзавод, 1-й квартал, 30)</option>
+                            <option value="ул. Чапаевская, 214 — Гимназия № 11">Гимназия № 11 (ул. Чапаевская, 214)</option>
+                            <option value="г. Нефтегорск, ул. Буровиков, 4А — ФСК Факел">ФСК «Факел» (г. Нефтегорск, ул. Буровиков, 4А)</option>
+                            <option value="ул. Ново-Садовая 16 — Дом физкультуры">Дом физкультуры (ул. Ново-Садовая 16)</option>
+                            <option value="ул. Стара-Загора, 143А — ЦСК ВВС">ЦСК ВВС (ул. Стара-Загора, 143А)</option>
+                            <option value="ул. 22-го Партсъезда, 1Б — СК Старт">СК "Старт" (ул. 22-го Партсъезда, 1Б)</option>
+                            <option value="жилой район Волгарь, ул. Нижнегородская, 16А — Волгарь Арена">Волгарь Арена (жилой район Волгарь, ул. Нижнегородская, 16А)</option>
+                            <option value="ул. Степана Разина — Зал на ул. Степана Разина">Зал на ул. Степана Разина</option>
+                            <option value="ул. Стара-Загора — Зал на ул. Стара-Загора">Зал на ул. Стара-Загора</option>
+                            <option value="ул. Чемпионская, 5 — Глория">Глория (ул. Чемпионская, 5)</option>
+                            <option value="ул. Баскетбольная, 1 — Легенда Арена">Легенда Арена (ул. Баскетбольная, 1)</option>
                         </select>
                     </div>
+
                     <div class="form-group">
                         <label for="message"><i class="fas fa-comment"></i> Сообщение</label>
                         <textarea id="message" name="message" placeholder="Хочу записаться на пробное занятие. Удобно в субботу утром."></textarea>
                     </div>
+                    
                     <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Отправить заявку</button>
                 </form>
             </div>
@@ -2106,21 +2173,9 @@
         <div class="container">
             <h2 class="section-title text-center"><i class="fas fa-map-marker-alt"></i> Контакты</h2>
             <p class="section-subtitle text-center">Всегда на связи</p>
-
             <div class="contact-grid">
-                <!-- Телефон -->
-                <div class="contact-item">
-                    <div class="icon"><i class="fas fa-phone-alt"></i></div>
-                    <h4>Телефон</h4>
-                    <p><a href="tel:+79171406726">+7 (917) 140-67-26</a></p>
-                </div>
-
-                <!-- Email -->
-                <div class="contact-item">
-                    <div class="icon"><i class="fas fa-envelope"></i></div>
-                    <h4>Email</h4>
-                    <p><a href="mailto:legenda_basket@mail.ru">legenda_basket@mail.ru</a></p>
-                </div>
+                <div class="contact-item"><div class="icon"><i class="fas fa-phone-alt"></i></div><h4>Телефон</h4><p><a href="tel:+79171406726">+7 (917) 140-67-26</a></p></div>
+                <div class="contact-item"><div class="icon"><i class="fas fa-envelope"></i></div><h4>Email</h4><p><a href="mailto:legenda_basket@mail.ru">legenda_basket@mail.ru</a></p></div>
             </div>
         </div>
     </section>
@@ -2131,52 +2186,12 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
-                <div>
-                    <div class="logo" style="margin-bottom:12px;">
-                        <img src="logo_legenda.jpg" alt="Логотип Легенда" style="height:36px; width:auto; border-radius:8px;">
-                        <div>
-                            <div class="logo-text" style="font-size:20px; color:#fff;">Легенда</div>
-                        </div>
-                    </div>
-                    <p style="font-size:14px;">Баскетбольный клуб для детей и взрослых</p>
-                    <div class="footer-phone" style="margin-top:10px;">
-                        <i class="fas fa-phone-alt"></i>
-                        <a href="tel:+79171406726" style="color:#fff;">+7 (917) 140-67-26</a>
-                    </div>
-                    <div class="footer-social">
-                        <a href="https://vk.ru/public192199445"><i class="fab fa-vk"></i></a>
-                        <a href="https://t.me/basketlegend"><i class="fab fa-telegram-plane"></i></a>
-                        <a href="https://www.instagram.com/legenda_basketball_samara"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-
-                <div>
-                    <h4>О школе</h4>
-                    <a href="#about">О нас</a>
-                    <a href="#halls">Залы</a>
-                    <a href="#prices">Цены</a>
-                </div>
-
-                <div>
-                    <h4>Ученикам</h4>
-                    <a href="#signup">Записаться</a>
-                    <a href="#gallery">Фото</a>
-                    <a href="#news">Новости</a>
-                </div>
-
-                <div>
-                    <h4>Контакты</h4>
-                    <a href="mailto:legenda_basket@mail.ru">legenda_basket@mail.ru</a>
-                    <a href="#">Самара, ЦСК ВВС</a>
-                    <a href="#">Политика конфиденциальности</a>
-                </div>
+                <div><div class="logo" style="margin-bottom:12px;"><img src="logo_legenda.jpg" alt="Логотип Легенда" style="height:36px;width:auto;border-radius:8px;"><div><div class="logo-text" style="font-size:20px;color:#fff;">Легенда</div></div></div><p style="font-size:14px;">Баскетбольный клуб для детей и взрослых</p><div class="footer-phone" style="margin-top:10px;"><i class="fas fa-phone-alt"></i><a href="tel:+79171406726" style="color:#fff;">+7 (917) 140-67-26</a></div><div class="footer-social"><a href="https://vk.ru/public192199445"><i class="fab fa-vk"></i></a><a href="https://t.me/basketlegend"><i class="fab fa-telegram-plane"></i></a><a href="https://www.instagram.com/legenda_basketball_samara"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-youtube"></i></a></div></div>
+                <div><h4>О школе</h4><a href="#about">О нас</a><a href="#halls">Залы</a><a href="#prices">Цены</a></div>
+                <div><h4>Ученикам</h4><a href="#signup">Записаться</a><a href="#gallery">Фото</a><a href="#news">Новости</a></div>
+                <div><h4>Контакты</h4><a href="mailto:legenda_basket@mail.ru">legenda_basket@mail.ru</a><a href="#">Самара, ЦСК ВВС</a><a href="#">Политика конфиденциальности</a></div>
             </div>
-
-            <div class="footer-bottom">
-                <span>© 2026 Легенда. Все права защищены.</span>
-                <span>Сделано с <span class="heart"><i class="fas fa-heart"></i></span> для баскетбола</span>
-            </div>
+            <div class="footer-bottom"><span>© 2026 Легенда. Все права защищены.</span><span>Сделано с <span class="heart"><i class="fas fa-heart"></i></span> для баскетбола</span></div>
         </div>
     </footer>
 
@@ -2355,16 +2370,15 @@
         if (heroStats) statsObserver.observe(heroStats);
 
         // =====================
-        // 7. КАРУСЕЛЬ НОВОСТЕЙ
+        // 7. НОВОСТИ — КАРУСЕЛЬ
         // =====================
-        const track = document.getElementById('newsTrack');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        const dotsContainer = document.getElementById('carouselDots');
+        const newsTrack = document.getElementById('newsTrack');
+        const newsPrevBtn = document.getElementById('prevBtn');
+        const newsNextBtn = document.getElementById('nextBtn');
+        const newsDots = document.getElementById('carouselDots');
 
-        if (track) {
-            const cards = track.querySelectorAll('.news-card');
-            const cardWidth = cards[0]?.offsetWidth || 0;
+        if (newsTrack) {
+            const cards = newsTrack.querySelectorAll('.news-card');
             let currentIndex = 0;
             let visibleCount = 1;
 
@@ -2382,7 +2396,7 @@
                 dot.className = 'dot' + (i === 0 ? ' active' : '');
                 dot.dataset.index = i;
                 dot.addEventListener('click', () => goToSlide(i));
-                dotsContainer.appendChild(dot);
+                newsDots.appendChild(dot);
             }
 
             function goToSlide(index) {
@@ -2393,15 +2407,15 @@
                 const gap = 30;
                 const cardFullWidth = cards[0]?.offsetWidth + gap || 0;
                 const offset = currentIndex * cardFullWidth;
-                track.style.transform = `translateX(-${offset}px)`;
+                newsTrack.style.transform = `translateX(-${offset}px)`;
 
                 document.querySelectorAll('.dot').forEach((dot, i) => {
                     dot.classList.toggle('active', i === currentIndex);
                 });
             }
 
-            prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
-            nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
+            newsPrevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
+            newsNextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
 
             let autoplayInterval = setInterval(() => goToSlide(currentIndex + 1), 5000);
 
@@ -2419,34 +2433,115 @@
                     if (newVisible !== visibleCount) {
                         visibleCount = newVisible;
                         const newTotal = Math.max(1, cards.length - visibleCount + 1);
-                        dotsContainer.innerHTML = '';
+                        newsDots.innerHTML = '';
                         for (let i = 0; i < newTotal; i++) {
                             const dot = document.createElement('button');
                             dot.className = 'dot' + (i === 0 ? ' active' : '');
                             dot.dataset.index = i;
                             dot.addEventListener('click', () => goToSlide(i));
-                            dotsContainer.appendChild(dot);
+                            newsDots.appendChild(dot);
                         }
                         goToSlide(0);
                     }
                     const gap = 30;
                     const cardFullWidth = cards[0]?.offsetWidth + gap || 0;
                     const offset = currentIndex * cardFullWidth;
-                    track.style.transform = `translateX(-${offset}px)`;
+                    newsTrack.style.transform = `translateX(-${offset}px)`;
                 }, 300);
             });
         }
 
         // =====================
-        // 8. ОТПРАВКА ФОРМЫ ЧЕРЕЗ CLOUDFLARE WORKER
+        // 8. ЗАЛЫ — КАРУСЕЛЬ
         // =====================
+        const hallsTrack = document.getElementById('hallsTrack');
+        const hallsPrevBtn = document.getElementById('hallsPrevBtn');
+        const hallsNextBtn = document.getElementById('hallsNextBtn');
+        const hallsDots = document.getElementById('hallsDots');
 
+        if (hallsTrack) {
+            const halls = hallsTrack.querySelectorAll('.hall-slide');
+            let currentHallIndex = 0;
+            let hallsVisible = 1;
+
+            function getHallsVisible() {
+                if (window.innerWidth >= 1024) return 3;
+                if (window.innerWidth >= 768) return 2;
+                return 1;
+            }
+
+            hallsVisible = getHallsVisible();
+            const totalHallsSlides = Math.max(1, halls.length - hallsVisible + 1);
+
+            for (let i = 0; i < totalHallsSlides; i++) {
+                const dot = document.createElement('button');
+                dot.className = 'dot' + (i === 0 ? ' active' : '');
+                dot.dataset.index = i;
+                dot.addEventListener('click', () => goToHallSlide(i));
+                hallsDots.appendChild(dot);
+            }
+
+            function goToHallSlide(index) {
+                if (index < 0) index = totalHallsSlides - 1;
+                if (index >= totalHallsSlides) index = 0;
+                currentHallIndex = index;
+
+                const gap = 30;
+                const hallFullWidth = halls[0]?.offsetWidth + gap || 0;
+                const offset = currentHallIndex * hallFullWidth;
+                hallsTrack.style.transform = `translateX(-${offset}px)`;
+
+                document.querySelectorAll('#hallsDots .dot').forEach((dot, i) => {
+                    dot.classList.toggle('active', i === currentHallIndex);
+                });
+            }
+
+            hallsPrevBtn.addEventListener('click', () => goToHallSlide(currentHallIndex - 1));
+            hallsNextBtn.addEventListener('click', () => goToHallSlide(currentHallIndex + 1));
+
+            let hallsAutoplay = setInterval(() => goToHallSlide(currentHallIndex + 1), 4000);
+
+            const hallsCarousel = document.querySelector('.halls-carousel');
+            hallsCarousel.addEventListener('mouseenter', () => clearInterval(hallsAutoplay));
+            hallsCarousel.addEventListener('mouseleave', () => {
+                hallsAutoplay = setInterval(() => goToHallSlide(currentHallIndex + 1), 4000);
+            });
+
+            let hallsResizeTimeout;
+            window.addEventListener('resize', () => {
+                clearTimeout(hallsResizeTimeout);
+                hallsResizeTimeout = setTimeout(() => {
+                    const newVisible = getHallsVisible();
+                    if (newVisible !== hallsVisible) {
+                        hallsVisible = newVisible;
+                        const newTotal = Math.max(1, halls.length - hallsVisible + 1);
+                        hallsDots.innerHTML = '';
+                        for (let i = 0; i < newTotal; i++) {
+                            const dot = document.createElement('button');
+                            dot.className = 'dot' + (i === 0 ? ' active' : '');
+                            dot.dataset.index = i;
+                            dot.addEventListener('click', () => goToHallSlide(i));
+                            hallsDots.appendChild(dot);
+                        }
+                        goToHallSlide(0);
+                    }
+                    const gap = 30;
+                    const hallFullWidth = halls[0]?.offsetWidth + gap || 0;
+                    const offset = currentHallIndex * hallFullWidth;
+                    hallsTrack.style.transform = `translateX(-${offset}px)`;
+                }, 300);
+            });
+        }
+
+        // =====================
+        // 9. ОТПРАВКА ФОРМЫ ЧЕРЕЗ CLOUDFLARE WORKER
+        // =====================
         async function sendForm(event) {
             event.preventDefault();
 
             const form = document.getElementById('signupForm');
             const formData = new FormData(form);
-            
+
             const submitBtn = form.querySelector('button[type="submit"]');
             const originalText = submitBtn.textContent;
             submitBtn.textContent = '⏳ Отправка...';
