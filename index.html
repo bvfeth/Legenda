@@ -537,86 +537,207 @@
         }
 
         /* ==========================================
-                   ПРЕИМУЩЕСТВА
+                   НОВОСТИ — КАРУСЕЛЬ
                 ========================================== */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+        .news-section {
+            background: linear-gradient(180deg, #f5f8fc 0%, #ffffff 100%);
+            padding: 80px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .news-carousel {
+            position: relative;
+            overflow: hidden;
+            padding: 10px 0;
+        }
+
+        .news-track {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
             gap: 30px;
         }
 
-        .feature-card {
+        .news-card {
+            min-width: calc(33.333% - 20px);
             background: #fff;
-            padding: 36px 30px;
             border-radius: 24px;
+            overflow: hidden;
             border: 1px solid rgba(0, 0, 0, 0.04);
             transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            cursor: default;
+            flex-shrink: 0;
         }
 
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
+        .news-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+        }
+
+        .news-card .news-image {
             width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, #ff8c42, #ff6a00);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        .feature-card:hover::before {
-            transform: scaleX(1);
+        .news-card:hover .news-image {
+            transform: scale(1.04);
         }
 
-        .feature-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06);
+        .news-card .news-body {
+            padding: 24px 28px 28px;
         }
 
-        .feature-card .icon {
-            font-size: 44px;
+        .news-card .news-date {
+            font-size: 13px;
             color: #ff8c42;
-            margin-bottom: 16px;
-            display: inline-block;
-            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
         }
 
-        .feature-card:hover .icon {
-            transform: scale(1.2) rotate(-10deg);
+        .news-card .news-date i {
+            font-size: 14px;
         }
 
-        .feature-card h3 {
+        .news-card h4 {
             font-size: 20px;
             font-weight: 700;
             margin-bottom: 10px;
+            color: #0b1a2e;
+            line-height: 1.3;
         }
 
-        .feature-card p {
+        .news-card p {
             color: #475569;
             font-size: 15px;
+            line-height: 1.7;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .news-card .news-read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #ff8c42;
+            font-weight: 600;
+            font-size: 14px;
+            margin-top: 14px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .news-card .news-read-more:hover {
+            gap: 14px;
+            color: #e6782e;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: #fff;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            color: #1a2332;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-btn:hover {
+            background: #ff8c42;
+            color: #fff;
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 8px 30px rgba(255, 140, 66, 0.3);
+        }
+
+        .carousel-btn.prev {
+            left: -26px;
+        }
+
+        .carousel-btn.next {
+            right: -26px;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 32px;
+        }
+
+        .carousel-dots .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #d1d9e6;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .carousel-dots .dot.active {
+            background: #ff8c42;
+            transform: scale(1.3);
+            box-shadow: 0 4px 16px rgba(255, 140, 66, 0.3);
+        }
+
+        .carousel-dots .dot:hover {
+            transform: scale(1.2);
+            background: #ff8c42;
         }
 
         /* ==========================================
                    О НАС
                 ========================================== */
+        .about-section {
+            background-image: url('logo_legenda.jpg');
+            background-size: 40%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-blend-mode: normal;
+            position: relative;
+            z-index: 1;
+        }
+
         .about-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            grid-template-columns: 1fr;
+            gap: 0;
             align-items: center;
+            background: rgba(245, 248, 252, 0.85);
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            border-radius: 24px;
+            padding: 50px 60px;
+        }
+
+        .about-text {
+            position: relative;
+            z-index: 1;
         }
 
         .about-text h2 {
-            font-size: 36px;
+            font-size: 42px;
             font-weight: 900;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
             letter-spacing: -0.02em;
+            color: #0b1a2e;
+            line-height: 1.2;
+            white-space: nowrap;
         }
 
         .about-text h2 span {
@@ -625,9 +746,15 @@
 
         .about-text p {
             color: #475569;
-            font-size: 16px;
-            margin-bottom: 16px;
+            font-size: 20px;
+            margin-bottom: 18px;
             line-height: 1.8;
+        }
+
+        .about-text p strong {
+            font-weight: 800;
+            font-size: 20px;
+            color: #0b1a2e;
         }
 
         .about-text ul {
@@ -636,11 +763,11 @@
         }
 
         .about-text ul li {
-            padding: 8px 0;
+            padding: 10px 0;
             display: flex;
             align-items: center;
             gap: 14px;
-            font-size: 15px;
+            font-size: 19px;
             opacity: 0;
             transform: translateX(-20px);
             animation: slide-in 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
@@ -673,37 +800,7 @@
         }
 
         .about-image {
-            position: relative;
-        }
-
-        .about-image::before {
-            content: '';
-            position: absolute;
-            inset: -12px;
-            border-radius: 28px;
-            background: linear-gradient(135deg, #ff8c42, #ff6a00);
-            opacity: 0.08;
-            transform: rotate(-3deg);
-            transition: transform 0.6s;
-        }
-
-        .about-image:hover::before {
-            transform: rotate(-1deg) scale(1.02);
-        }
-
-        .about-image img {
-            border-radius: 24px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06);
-            width: 100%;
-            max-height: 480px;
-            object-fit: cover;
-            position: relative;
-            z-index: 1;
-            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        .about-image:hover img {
-            transform: scale(1.02);
+            display: none;
         }
 
         /* ==========================================
@@ -970,229 +1067,6 @@
         }
 
         /* ==========================================
-                   ФОТОГАЛЕРЕЯ
-                ========================================== */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
-        }
-
-        .gallery-grid .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 20px;
-            cursor: pointer;
-        }
-
-        .gallery-grid .gallery-item::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(11, 26, 46, 0.3), transparent 60%);
-            z-index: 1;
-            opacity: 0;
-            transition: opacity 0.6s;
-        }
-
-        .gallery-grid .gallery-item:hover::before {
-            opacity: 1;
-        }
-
-        .gallery-grid .gallery-item::after {
-            content: '\f002';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            color: #fff;
-            font-size: 28px;
-            z-index: 2;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        .gallery-grid .gallery-item:hover::after {
-            transform: translate(-50%, -50%) scale(1);
-        }
-
-        .gallery-grid img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        .gallery-grid .gallery-item:hover img {
-            transform: scale(1.08);
-        }
-
-        /* ==========================================
-                   НОВОСТИ — КАРУСЕЛЬ
-                ========================================== */
-        .news-section {
-            background: linear-gradient(180deg, #f5f8fc 0%, #ffffff 100%);
-            padding: 80px 0;
-            position: relative;
-            z-index: 1;
-        }
-
-        .news-carousel {
-            position: relative;
-            overflow: hidden;
-            padding: 10px 0;
-        }
-
-        .news-track {
-            display: flex;
-            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-            gap: 30px;
-        }
-
-        .news-card {
-            min-width: calc(33.333% - 20px);
-            background: #fff;
-            border-radius: 24px;
-            overflow: hidden;
-            border: 1px solid rgba(0, 0, 0, 0.04);
-            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-            flex-shrink: 0;
-        }
-
-        .news-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
-        }
-
-        .news-card .news-image {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        .news-card:hover .news-image {
-            transform: scale(1.04);
-        }
-
-        .news-card .news-body {
-            padding: 24px 28px 28px;
-        }
-
-        .news-card .news-date {
-            font-size: 13px;
-            color: #ff8c42;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 8px;
-        }
-
-        .news-card .news-date i {
-            font-size: 14px;
-        }
-
-        .news-card h4 {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: #0b1a2e;
-            line-height: 1.3;
-        }
-
-        .news-card p {
-            color: #475569;
-            font-size: 15px;
-            line-height: 1.7;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .news-card .news-read-more {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: #ff8c42;
-            font-weight: 600;
-            font-size: 14px;
-            margin-top: 14px;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-
-        .news-card .news-read-more:hover {
-            gap: 14px;
-            color: #e6782e;
-        }
-
-        .carousel-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 52px;
-            height: 52px;
-            border-radius: 50%;
-            background: #fff;
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            color: #1a2332;
-            font-size: 20px;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .carousel-btn:hover {
-            background: #ff8c42;
-            color: #fff;
-            transform: translateY(-50%) scale(1.1);
-            box-shadow: 0 8px 30px rgba(255, 140, 66, 0.3);
-        }
-
-        .carousel-btn.prev {
-            left: -26px;
-        }
-
-        .carousel-btn.next {
-            right: -26px;
-        }
-
-        .carousel-dots {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 32px;
-        }
-
-        .carousel-dots .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #d1d9e6;
-            border: none;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        .carousel-dots .dot.active {
-            background: #ff8c42;
-            transform: scale(1.3);
-            box-shadow: 0 4px 16px rgba(255, 140, 66, 0.3);
-        }
-
-        .carousel-dots .dot:hover {
-            transform: scale(1.2);
-            background: #ff8c42;
-        }
-
-        /* ==========================================
                    ФОРМА
                 ========================================== */
         .form-wrap {
@@ -1262,6 +1136,41 @@
             background-repeat: no-repeat;
             background-position: right 16px center;
             padding-right: 40px;
+        }
+
+        /* Стили для чекбокса согласия */
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            min-width: 18px;
+            margin-top: 2px;
+            cursor: pointer;
+            accent-color: #ff8c42;
+        }
+
+        .checkbox-group label {
+            font-size: 14px;
+            color: #475569;
+            font-weight: 400;
+            cursor: pointer;
+            line-height: 1.5;
+        }
+
+        .checkbox-group label a {
+            color: #ff8c42;
+            text-decoration: underline;
+            transition: color 0.3s;
+        }
+
+        .checkbox-group label a:hover {
+            color: #e6782e;
         }
 
         .form-wrap .btn {
@@ -1478,17 +1387,7 @@
             }
 
             .about-grid {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .about-text ul li {
-                justify-content: center;
-            }
-
-            .features-grid,
-            .halls-grid {
-                grid-template-columns: repeat(2, 1fr);
+                padding: 40px 30px;
             }
 
             .prices-grid {
@@ -1516,10 +1415,6 @@
                 justify-self: center;
                 width: 100%;
                 max-width: 340px;
-            }
-
-            .gallery-grid {
-                grid-template-columns: repeat(2, 1fr);
             }
 
             .news-card {
@@ -1627,8 +1522,28 @@
                 font-size: 28px;
             }
 
-            .features-grid,
-            .halls-grid,
+            .about-grid {
+                padding: 30px 20px;
+            }
+
+            .about-text h2 {
+                font-size: 32px;
+                white-space: normal;
+            }
+
+            .about-text p {
+                font-size: 18px;
+            }
+
+            .about-text p strong {
+                font-size: 18px;
+            }
+
+            .about-text ul li {
+                font-size: 17px;
+                padding: 8px 0;
+            }
+
             .contact-grid {
                 grid-template-columns: 1fr;
             }
@@ -1651,15 +1566,6 @@
                 grid-row: auto;
                 justify-self: center;
                 width: 100%;
-            }
-
-            .gallery-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 10px;
-            }
-
-            .gallery-grid img {
-                height: 150px;
             }
 
             .news-card {
@@ -1710,10 +1616,6 @@
                 padding: 10px;
             }
 
-            .gallery-grid img {
-                height: 120px;
-            }
-
             .price-card .price {
                 font-size: 32px;
             }
@@ -1732,6 +1634,27 @@
 
             .contact-grid {
                 max-width: 100%;
+            }
+
+            .about-grid {
+                padding: 20px 15px;
+            }
+
+            .about-text h2 {
+                font-size: 28px;
+            }
+
+            .about-text p {
+                font-size: 17px;
+            }
+
+            .about-text p strong {
+                font-size: 17px;
+            }
+
+            .about-text ul li {
+                font-size: 16px;
+                padding: 6px 0;
             }
         }
     </style>
@@ -1781,11 +1704,10 @@
     <nav class="main-nav" id="mainNav">
         <div class="container">
             <ul id="mainMenu">
+                <li><a href="#news">Новости</a></li>
                 <li><a href="#about">О нас</a></li>
                 <li><a href="#halls">Залы</a></li>
                 <li><a href="#prices">Цены</a></li>
-                <li><a href="#gallery">Фото</a></li>
-                <li><a href="#news">Новости</a></li>
                 <li><a href="#signup">Запись</a></li>
                 <li><a href="#contacts">Контакты</a></li>
             </ul>
@@ -1819,16 +1741,23 @@
     </section>
 
     <!-- ==========================================
-    ПРЕИМУЩЕСТВА
+    НОВОСТИ — КАРУСЕЛЬ
     ========================================== -->
-    <section class="section section-light">
+    <section class="news-section" id="news">
         <div class="container">
-            <h2 class="section-title text-center"><i class="fas fa-star"></i> Почему выбирают нас</h2>
-            <p class="section-subtitle text-center">Мы создаём комфортную среду для роста и развития</p>
-            <div class="features-grid">
-                <div class="feature-card"><div class="icon"><i class="fas fa-user-graduate"></i></div><h3>Опытные тренеры</h3><p>Мастера спорта с многолетним опытом работы с детьми и взрослыми</p></div>
-                <div class="feature-card"><div class="icon"><i class="fas fa-clock"></i></div><h3>Удобное расписание</h3><p>Занятия в утреннее, дневное и вечернее время. 7 дней в неделю</p></div>
-                <div class="feature-card"><div class="icon"><i class="fas fa-users"></i></div><h3>Все уровни подготовки</h3><p>Группы для начинающих, продвинутых и профессионалов</p></div>
+            <h2 class="section-title text-center"><i class="fas fa-newspaper"></i> Новости школы</h2>
+            <p class="section-subtitle text-center">Следите за событиями и достижениями наших учеников</p>
+            <div class="news-carousel">
+                <div class="news-track" id="newsTrack">
+                    <div class="news-card"><img class="news-image" src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&h=400&fit=crop" alt="Победа в турнире"><div class="news-body"><div class="news-date"><i class="fas fa-calendar-alt"></i> 15 сентября 2026</div><h4>Победа на городском турнире!</h4><p>Наша команда «Самарские Орлы» заняла 1 место в ежегодном городском турнире по баскетболу. Поздравляем!</p><a href="#" class="news-read-more">Читать далее <i class="fas fa-arrow-right"></i></a></div></div>
+                    <div class="news-card"><img class="news-image" src="https://images.unsplash.com/photo-1519861531473-9200262188bf?w=600&h=400&fit=crop" alt="Набор в группы"><div class="news-body"><div class="news-date"><i class="fas fa-calendar-alt"></i> 10 сентября 2026</div><h4>Открыт набор в новые группы</h4><p>Начинаем набор детей 6–9 лет и взрослых 18+. Первое пробное занятие бесплатно. Успейте записаться!</p><a href="#signup" class="news-read-more">Записаться <i class="fas fa-arrow-right"></i></a></div></div>
+                    <div class="news-card"><img class="news-image" src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&h=400&fit=crop" alt="Спортивный лагерь"><div class="news-body"><div class="news-date"><i class="fas fa-calendar-alt"></i> 5 сентября 2026</div><h4>Спортивный лагерь — осень 2026</h4><p>Объявляем набор на осенний спортивный лагерь для детей 10–16 лет. Тренировки, игры и новые друзья!</p><a href="#" class="news-read-more">Читать далее <i class="fas fa-arrow-right"></i></a></div></div>
+                    <div class="news-card"><img class="news-image" src="https://images.unsplash.com/photo-1519861531473-9200262188bf?w=600&h=400&fit=crop" alt="День открытых дверей"><div class="news-body"><div class="news-date"><i class="fas fa-calendar-alt"></i> 28 августа 2026</div><h4>День открытых дверей</h4><p>Приходите на День открытых дверей 20 сентября! Знакомство с тренерами, пробные тренировки и скидки.</p><a href="#" class="news-read-more">Читать далее <i class="fas fa-arrow-right"></i></a></div></div>
+                    <div class="news-card"><img class="news-image" src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&h=400&fit=crop" alt="Выпускной"><div class="news-body"><div class="news-date"><i class="fas fa-calendar-alt"></i> 15 августа 2026</div><h4>Выпускной наших учеников</h4><p>Состоялся выпускной вечер для наших учеников. 25 человек успешно завершили годовой курс обучения.</p><a href="#" class="news-read-more">Читать далее <i class="fas fa-arrow-right"></i></a></div></div>
+                </div>
+                <button class="carousel-btn prev" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-btn next" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+                <div class="carousel-dots" id="carouselDots"></div>
             </div>
         </div>
     </section>
@@ -1836,21 +1765,35 @@
     <!-- ==========================================
     О НАС
     ========================================== -->
-    <section class="section section-dark" id="about">
+    <section class="section section-dark about-section" id="about">
         <div class="container">
             <div class="about-grid">
                 <div class="about-text">
-                    <h2>О <span>нашей школе</span></h2>
-                    <p>Баскетбольный клуб Легенда — это место, где каждый может научиться играть в баскетбол, улучшить свои навыки и найти новых друзей.</p>
-                    <p>Мы работаем с 2015 года и за это время обучили более 1000 спортсменов. Наши воспитанники участвуют в городских соревнованиях и показывают отличные результаты.</p>
+                    <h2>«Легенда» — это не просто клуб!</h2>
+                    
+                    <p>С 2019 года мы помогаем игрокам любого уровня становиться сильнее, увереннее и получать удовольствие от игры.</p>
+                    
+                    <p><strong>Для кого:</strong></p>
                     <ul>
-                        <li><i class="fas fa-check-circle"></i> Индивидуальный подход к каждому ученику</li>
-                        <li><i class="fas fa-check-circle"></i> Современные методики тренировок</li>
-                        <li><i class="fas fa-check-circle"></i> Участие в турнирах и соревнованиях</li>
-                        <li><i class="fas fa-check-circle"></i> Дружелюбная атмосфера и поддержка</li>
+                        <li><i class="fas fa-check-circle"></i> Для мальчиков и девочек с любым уровнем подготовки</li>
+                        <li><i class="fas fa-check-circle"></i> Для взрослых, которые хотят играть в команде</li>
                     </ul>
+                    
+                    <div style="height: 12px;"></div>
+                    
+                    <p><strong>Что ждёт вас:</strong></p>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Участие в соревнованиях и турнирах</li>
+                        <li><i class="fas fa-check-circle"></i> Товарищеские игры с другими клубами</li>
+                        <li><i class="fas fa-check-circle"></i> Ежегодные сборы для повышения мастерства</li>
+                        <li><i class="fas fa-check-circle"></i> Собственная лига для постоянной игровой практики</li>
+                    </ul>
+                    
+                    <div style="height: 12px;"></div>
+                    
+                    <p>Мы работаем с федерацией баскетбола, состоим в реестре Минспорта и знаем, как подготовить игрока любого уровня. Наши залы — комфортные, светлые, расположены в удобных локациях.</p>
+                    
                 </div>
-                <div class="about-image"><img src="https://images.unsplash.com/photo-1519861531473-9200262188bf?w=600&h=450&fit=crop&crop=center" alt="Баскетбольный клуб Легенда"></div>
             </div>
         </div>
     </section>
@@ -2071,45 +2014,7 @@
     </section>
 
     <!-- ==========================================
-    ФОТОГАЛЕРЕЯ
-    ========================================== -->
-    <section class="section section-light" id="gallery">
-        <div class="container">
-            <h2 class="section-title text-center"><i class="fas fa-images"></i> Фотогалерея</h2>
-            <p class="section-subtitle text-center">Моменты с наших тренировок</p>
-            <div class="gallery-grid">
-                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&h=400&fit=crop" alt="Тренировка по баскетболу" loading="lazy"></div>
-                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&h=400&fit=crop" alt="Игрок бросает мяч" loading="lazy"></div>
-                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1519861531473-9200262188bf?w=600&h=400&fit=crop" alt="Детская тренировка по баскетболу" loading="lazy"></div>
-                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&h=400&fit=crop&crop=center" alt="Баскетбольная площадка" loading="lazy"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==========================================
-    НОВОСТИ — КАРУСЕЛЬ
-    ========================================== -->
-    <section class="news-section" id="news">
-        <div class="container">
-            <h2 class="section-title text-center"><i class="fas fa-newspaper"></i> Новости школы</h2>
-            <p class="section-subtitle text-center">Следите за событиями и достижениями наших учеников</p>
-            <div class="news-carousel">
-                <div class="news-track" id="newsTrack">
-                    <div class="news-card"><img class="news-image" src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&h=400&fit=crop" alt="Победа в турнире"><div class="news-body"><div class="news-date"><i class="fas fa-calendar-alt"></i> 15 сентября 2026</div><h4>Победа на городском турнире!</h4><p>Наша команда «Самарские Орлы» заняла 1 место в ежегодном городском турнире по баскетболу. Поздравляем!</p><a href="#" class="news-read-more">Читать далее <i class="fas fa-arrow-right"></i></a></div></div>
-                    <div class="news-card"><img class="news-image" src="https://images.unsplash.com/photo-1519861531473-9200262188bf?w=600&h=400&fit=crop" alt="Набор в группы"><div class="news-body"><div class="news-date"><i class="fas fa-calendar-alt"></i> 10 сентября 2026</div><h4>Открыт набор в новые группы</h4><p>Начинаем набор детей 6–9 лет и взрослых 18+. Первое пробное занятие бесплатно. Успейте записаться!</p><a href="#signup" class="news-read-more">Записаться <i class="fas fa-arrow-right"></i></a></div></div>
-                    <div class="news-card"><img class="news-image" src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&h=400&fit=crop" alt="Спортивный лагерь"><div class="news-body"><div class="news-date"><i class="fas fa-calendar-alt"></i> 5 сентября 2026</div><h4>Спортивный лагерь — осень 2026</h4><p>Объявляем набор на осенний спортивный лагерь для детей 10–16 лет. Тренировки, игры и новые друзья!</p><a href="#" class="news-read-more">Читать далее <i class="fas fa-arrow-right"></i></a></div></div>
-                    <div class="news-card"><img class="news-image" src="https://images.unsplash.com/photo-1519861531473-9200262188bf?w=600&h=400&fit=crop" alt="День открытых дверей"><div class="news-body"><div class="news-date"><i class="fas fa-calendar-alt"></i> 28 августа 2026</div><h4>День открытых дверей</h4><p>Приходите на День открытых дверей 20 сентября! Знакомство с тренерами, пробные тренировки и скидки.</p><a href="#" class="news-read-more">Читать далее <i class="fas fa-arrow-right"></i></a></div></div>
-                    <div class="news-card"><img class="news-image" src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&h=400&fit=crop" alt="Выпускной"><div class="news-body"><div class="news-date"><i class="fas fa-calendar-alt"></i> 15 августа 2026</div><h4>Выпускной наших учеников</h4><p>Состоялся выпускной вечер для наших учеников. 25 человек успешно завершили годовой курс обучения.</p><a href="#" class="news-read-more">Читать далее <i class="fas fa-arrow-right"></i></a></div></div>
-                </div>
-                <button class="carousel-btn prev" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
-                <button class="carousel-btn next" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
-                <div class="carousel-dots" id="carouselDots"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ==========================================
-    ЗАПИСЬ (ФОРМА) — ДОБАВЛЕНЫ ШКОЛА №148 И ШКОЛА №132
+    ЗАПИСЬ (ФОРМА) — ДОБАВЛЕНА ГАЛОЧКА СОГЛАСИЯ
     ========================================== -->
     <section class="section section-light" id="signup">
         <div class="container">
@@ -2159,6 +2064,15 @@
                         <label for="message"><i class="fas fa-comment"></i> Сообщение</label>
                         <textarea id="message" name="message" placeholder="Хочу записаться на пробное занятие. Удобно в субботу утром."></textarea>
                     </div>
+
+                    <!-- ГАЛОЧКА СОГЛАСИЯ НА ОБРАБОТКУ ПЕРСОНАЛЬНЫХ ДАННЫХ -->
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="agree" name="agree" required>
+                        <label for="agree">
+                            Я соглашаюсь на обработку персональных данных в соответствии с 
+                            <a href="privacy.html" target="_blank">Политикой конфиденциальности</a>
+                        </label>
+                    </div>
                     
                     <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Отправить заявку</button>
                 </form>
@@ -2181,15 +2095,20 @@
     </section>
 
     <!-- ==========================================
-    ПОДВАЛ
+    ПОДВАЛ — ДОБАВЛЕНА ССЫЛКА НА ПОЛИТИКУ
     ========================================== -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
                 <div><div class="logo" style="margin-bottom:12px;"><img src="logo_legenda.jpg" alt="Логотип Легенда" style="height:36px;width:auto;border-radius:8px;"><div><div class="logo-text" style="font-size:20px;color:#fff;">Легенда</div></div></div><p style="font-size:14px;">Баскетбольный клуб для детей и взрослых</p><div class="footer-phone" style="margin-top:10px;"><i class="fas fa-phone-alt"></i><a href="tel:+79171406726" style="color:#fff;">+7 (917) 140-67-26</a></div><div class="footer-social"><a href="https://vk.ru/public192199445"><i class="fab fa-vk"></i></a><a href="https://t.me/basketlegend"><i class="fab fa-telegram-plane"></i></a><a href="https://www.instagram.com/legenda_basketball_samara"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-youtube"></i></a></div></div>
                 <div><h4>О школе</h4><a href="#about">О нас</a><a href="#halls">Залы</a><a href="#prices">Цены</a></div>
-                <div><h4>Ученикам</h4><a href="#signup">Записаться</a><a href="#gallery">Фото</a><a href="#news">Новости</a></div>
-                <div><h4>Контакты</h4><a href="mailto:legenda_basket@mail.ru">legenda_basket@mail.ru</a><a href="#">Самара, ЦСК ВВС</a><a href="#">Политика конфиденциальности</a></div>
+                <div><h4>Ученикам</h4><a href="#signup">Записаться</a><a href="#news">Новости</a></div>
+                <div>
+                    <h4>Контакты</h4>
+                    <a href="mailto:legenda_basket@mail.ru">legenda_basket@mail.ru</a>
+                    <a href="#">Самара, ЦСК ВВС</a>
+                    <a href="privacy.html">Политика конфиденциальности</a>
+                </div>
             </div>
             <div class="footer-bottom"><span>© 2026 Легенда. Все права защищены.</span><span>Сделано с <span class="heart"><i class="fas fa-heart"></i></span> для баскетбола</span></div>
         </div>
