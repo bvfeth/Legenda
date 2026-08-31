@@ -571,7 +571,7 @@
                 ========================================== */
         .news-section {
             background: linear-gradient(180deg, #f5f8fc 0%, #ffffff 100%);
-            padding: 80px 0;
+            padding: 60px 0;
             position: relative;
             z-index: 1;
         }
@@ -585,13 +585,13 @@
         .news-track {
             display: flex;
             transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-            gap: 30px;
+            gap: 24px;
         }
 
         .news-card {
-            min-width: calc(33.333% - 20px);
+            min-width: calc(33.333% - 16px);
             background: #fff;
-            border-radius: 24px;
+            border-radius: 20px;
             overflow: hidden;
             border: 1px solid rgba(0, 0, 0, 0.04);
             transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -618,7 +618,7 @@
         }
 
         .news-card .news-body {
-            padding: 24px 28px 28px;
+            padding: 20px 24px 24px;
         }
 
         .news-card .news-date {
@@ -628,7 +628,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .news-card .news-date i {
@@ -636,17 +636,17 @@
         }
 
         .news-card h4 {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             color: #0b1a2e;
             line-height: 1.3;
         }
 
         .news-card p {
             color: #475569;
-            font-size: 15px;
-            line-height: 1.7;
+            font-size: 14px;
+            line-height: 1.6;
             display: -webkit-box;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
@@ -660,7 +660,7 @@
             color: #ff8c42;
             font-weight: 600;
             font-size: 14px;
-            margin-top: 14px;
+            margin-top: 12px;
             transition: all 0.3s;
             cursor: pointer;
         }
@@ -1376,6 +1376,8 @@
         /* ==========================================
                    АДАПТИВНОСТЬ
                 ========================================== */
+
+        /* ПЛАНШЕТЫ (до 1024px) */
         @media (max-width: 1024px) {
             .hero .container {
                 grid-template-columns: 1fr;
@@ -1447,11 +1449,23 @@
             }
 
             .news-card {
-                min-width: calc(50% - 15px);
+                min-width: calc(50% - 12px);
             }
 
-            .news-card .news-image {
-                height: 350px;
+            .news-card .news-body {
+                padding: 18px 20px 20px;
+            }
+
+            .news-card h4 {
+                font-size: 17px;
+            }
+
+            .news-card p {
+                font-size: 14px;
+            }
+
+            .news-card .news-read-more {
+                font-size: 13px;
             }
 
             .carousel-btn.prev {
@@ -1467,6 +1481,7 @@
             }
         }
 
+        /* МОБИЛЬНЫЕ (до 768px) */
         @media (max-width: 768px) {
             .header {
                 padding: 10px 0;
@@ -1577,14 +1592,6 @@
                 padding: 8px 0;
             }
 
-            .news-card {
-                min-width: 100%;
-            }
-
-            .news-card .news-image {
-                height: 300px;
-            }
-
             .contact-grid {
                 grid-template-columns: 1fr;
             }
@@ -1609,20 +1616,6 @@
                 width: 100%;
             }
 
-            .carousel-btn {
-                width: 40px;
-                height: 40px;
-                font-size: 16px;
-            }
-
-            .carousel-btn.prev {
-                left: -6px;
-            }
-
-            .carousel-btn.next {
-                right: -6px;
-            }
-
             .form-wrap {
                 padding: 28px 20px;
             }
@@ -1636,8 +1629,87 @@
                 flex-direction: column;
                 text-align: center;
             }
+
+            /* ====== АДАПТИВНОСТЬ НОВОСТЕЙ ДЛЯ МОБИЛЬНЫХ ====== */
+            .news-section {
+                padding: 40px 0;
+            }
+
+            .news-track {
+                gap: 16px;
+            }
+
+            .news-card {
+                min-width: 100%;
+                border-radius: 16px;
+            }
+
+            .news-card .news-image {
+                height: 220px;
+            }
+
+            .news-card .news-body {
+                padding: 14px 16px 18px;
+            }
+
+            .news-card .news-date {
+                font-size: 11px;
+                gap: 6px;
+                margin-bottom: 4px;
+            }
+
+            .news-card .news-date i {
+                font-size: 12px;
+            }
+
+            .news-card h4 {
+                font-size: 16px;
+                margin-bottom: 6px;
+                line-height: 1.3;
+            }
+
+            .news-card p {
+                font-size: 13px;
+                -webkit-line-clamp: 3;
+                line-height: 1.5;
+            }
+
+            .news-card .news-read-more {
+                font-size: 13px;
+                margin-top: 10px;
+                gap: 6px;
+            }
+
+            .news-card .news-read-more i {
+                font-size: 12px;
+            }
+
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+
+            .carousel-btn.prev {
+                left: 6px;
+            }
+
+            .carousel-btn.next {
+                right: 6px;
+            }
+
+            .carousel-dots {
+                gap: 8px;
+                margin-top: 20px;
+            }
+
+            .carousel-dots .dot {
+                width: 10px;
+                height: 10px;
+            }
         }
 
+        /* МАЛЕНЬКИЕ ТЕЛЕФОНЫ (до 480px) */
         @media (max-width: 480px) {
             .hero h1 {
                 font-size: 22px;
@@ -1659,10 +1731,6 @@
 
             .header-phone {
                 font-size: 15px;
-            }
-
-            .news-card .news-image {
-                height: 220px;
             }
 
             .hall-card .hall-image {
@@ -1692,6 +1760,64 @@
             .about-text ul li {
                 font-size: 16px;
                 padding: 6px 0;
+            }
+
+            /* ====== АДАПТИВНОСТЬ НОВОСТЕЙ ДЛЯ ТЕЛЕФОНОВ ====== */
+            .news-card .news-image {
+                height: 180px;
+            }
+
+            .news-card .news-body {
+                padding: 12px 14px 16px;
+            }
+
+            .news-card .news-date {
+                font-size: 10px;
+                gap: 4px;
+            }
+
+            .news-card .news-date i {
+                font-size: 10px;
+            }
+
+            .news-card h4 {
+                font-size: 14px;
+                margin-bottom: 4px;
+            }
+
+            .news-card p {
+                font-size: 12px;
+                -webkit-line-clamp: 2;
+                line-height: 1.4;
+            }
+
+            .news-card .news-read-more {
+                font-size: 12px;
+                margin-top: 8px;
+                gap: 4px;
+            }
+
+            .news-card .news-read-more i {
+                font-size: 10px;
+            }
+
+            .carousel-btn {
+                width: 36px;
+                height: 36px;
+                font-size: 14px;
+            }
+
+            .carousel-btn.prev {
+                left: 4px;
+            }
+
+            .carousel-btn.next {
+                right: 4px;
+            }
+
+            .carousel-dots .dot {
+                width: 8px;
+                height: 8px;
             }
         }
     </style>
