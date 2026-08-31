@@ -362,25 +362,55 @@
         .hero-badge {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            background: rgba(255, 140, 66, 0.2);
-            color: #ff8c42;
-            padding: 6px 18px;
+            gap: 12px;
+            background: linear-gradient(135deg, #ff6a00, #ff8c42);
+            color: #fff;
+            padding: 12px 28px;
             border-radius: 50px;
-            font-size: 13px;
-            font-weight: 600;
-            margin-bottom: 16px;
-            border: 1px solid rgba(255, 140, 66, 0.15);
-            animation: pulse-badge 2.5s ease-in-out infinite;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 30px rgba(255, 140, 66, 0.4);
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            animation: badge-pulse 2s ease-in-out infinite;
         }
 
-        @keyframes pulse-badge {
+        .hero-badge i {
+            font-size: 20px;
+        }
+
+        .hero-badge .badge-pulse {
+            position: absolute;
+            inset: -4px;
+            border-radius: 50px;
+            border: 2px solid rgba(255, 140, 66, 0.5);
+            animation: badge-ring 2s ease-in-out infinite;
+        }
+
+        @keyframes badge-pulse {
             0%,
             100% {
-                box-shadow: 0 0 0 0 rgba(255, 140, 66, 0.2);
+                transform: scale(1);
+                box-shadow: 0 4px 30px rgba(255, 140, 66, 0.4);
             }
             50% {
-                box-shadow: 0 0 0 8px rgba(255, 140, 66, 0);
+                transform: scale(1.03);
+                box-shadow: 0 4px 50px rgba(255, 140, 66, 0.7);
+            }
+        }
+
+        @keyframes badge-ring {
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0;
             }
         }
 
@@ -575,9 +605,12 @@
 
         .news-card .news-image {
             width: 100%;
-            height: 220px;
+            height: 300px;
+            aspect-ratio: 16 / 9;
             object-fit: cover;
+            object-position: top center;
             transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            background: #f5f8fc;
         }
 
         .news-card:hover .news-image {
@@ -698,6 +731,12 @@
         .carousel-dots .dot:hover {
             transform: scale(1.2);
             background: #ff8c42;
+        }
+
+        /* ====== ЗАКРЕПЛЕННАЯ НОВОСТЬ ====== */
+        .pinned-news {
+            border: 2px solid #ff8c42 !important;
+            position: relative;
         }
 
         /* ==========================================
@@ -1411,6 +1450,10 @@
                 min-width: calc(50% - 15px);
             }
 
+            .news-card .news-image {
+                height: 350px;
+            }
+
             .carousel-btn.prev {
                 left: -10px;
             }
@@ -1534,6 +1577,14 @@
                 padding: 8px 0;
             }
 
+            .news-card {
+                min-width: 100%;
+            }
+
+            .news-card .news-image {
+                height: 300px;
+            }
+
             .contact-grid {
                 grid-template-columns: 1fr;
             }
@@ -1556,10 +1607,6 @@
                 grid-row: auto;
                 justify-self: center;
                 width: 100%;
-            }
-
-            .news-card {
-                min-width: 100%;
             }
 
             .carousel-btn {
@@ -1615,7 +1662,7 @@
             }
 
             .news-card .news-image {
-                height: 180px;
+                height: 220px;
             }
 
             .hall-card .hall-image {
@@ -1713,7 +1760,12 @@
 
         <div class="container">
             <div class="hero-content">
-                <div class="hero-badge"><i class="fas fa-fire"></i> Набор открыт</div>
+                <div class="hero-badge">
+                    <i class="fas fa-fire"></i> 
+                    НАБОР ОТКРЫТ
+                    <span class="badge-pulse"></span>
+                </div>
+                
                 <h1>Баскетбольный клуб <span>Легенда</span></h1>
                 <p>Индивидуальные и групповые занятия для детей от 6 лет и взрослых. Опытные тренеры, удобный график.</p>
                 <div class="hero-buttons">
@@ -1731,19 +1783,85 @@
     </section>
 
     <!-- ==========================================
-    НОВОСТИ — КАРУСЕЛЬ
+    НОВОСТИ — КАРУСЕЛЬ (с ссылками на страницы новостей)
     ========================================== -->
     <section class="news-section" id="news">
         <div class="container">
             <h2 class="section-title text-center"><i class="fas fa-newspaper"></i> Новости школы</h2>
             <p class="section-subtitle text-center">Следите за событиями и достижениями наших учеников</p>
+
             <div class="news-carousel">
                 <div class="news-track" id="newsTrack">
-                    <div class="news-card"><img class="news-image" src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&h=400&fit=crop" alt="Победа в турнире"><div class="news-body"><div class="news-date"><i class="fas fa-calendar-alt"></i> 15 сентября 2026</div><h4>Победа на городском турнире!</h4><p>Наша команда «Самарские Орлы» заняла 1 место в ежегодном городском турнире по баскетболу. Поздравляем!</p><a href="#" class="news-read-more">Читать далее <i class="fas fa-arrow-right"></i></a></div></div>
-                    <div class="news-card"><img class="news-image" src="https://images.unsplash.com/photo-1519861531473-9200262188bf?w=600&h=400&fit=crop" alt="Набор в группы"><div class="news-body"><div class="news-date"><i class="fas fa-calendar-alt"></i> 10 сентября 2026</div><h4>Открыт набор в новые группы</h4><p>Начинаем набор детей 6–9 лет и взрослых 18+. Первое пробное занятие бесплатно. Успейте записаться!</p><a href="#signup" class="news-read-more">Записаться <i class="fas fa-arrow-right"></i></a></div></div>
-                    <div class="news-card"><img class="news-image" src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&h=400&fit=crop" alt="Спортивный лагерь"><div class="news-body"><div class="news-date"><i class="fas fa-calendar-alt"></i> 5 сентября 2026</div><h4>Спортивный лагерь — осень 2026</h4><p>Объявляем набор на осенний спортивный лагерь для детей 10–16 лет. Тренировки, игры и новые друзья!</p><a href="#" class="news-read-more">Читать далее <i class="fas fa-arrow-right"></i></a></div></div>
-                    <div class="news-card"><img class="news-image" src="https://images.unsplash.com/photo-1519861531473-9200262188bf?w=600&h=400&fit=crop" alt="День открытых дверей"><div class="news-body"><div class="news-date"><i class="fas fa-calendar-alt"></i> 28 августа 2026</div><h4>День открытых дверей</h4><p>Приходите на День открытых дверей 20 сентября! Знакомство с тренерами, пробные тренировки и скидки.</p><a href="#" class="news-read-more">Читать далее <i class="fas fa-arrow-right"></i></a></div></div>
-                    <div class="news-card"><img class="news-image" src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&h=400&fit=crop" alt="Выпускной"><div class="news-body"><div class="news-date"><i class="fas fa-calendar-alt"></i> 15 августа 2026</div><h4>Выпускной наших учеников</h4><p>Состоялся выпускной вечер для наших учеников. 25 человек успешно завершили годовой курс обучения.</p><a href="#" class="news-read-more">Читать далее <i class="fas fa-arrow-right"></i></a></div></div>
+                    
+                    <!-- ЗАКРЕПЛЕННАЯ НОВОСТЬ (всегда первая) -->
+                    <div class="news-card pinned-news">
+                        <div style="position: absolute; top: 12px; left: 12px; background: #ff8c42; color: #fff; padding: 4px 14px; border-radius: 50px; font-size: 11px; font-weight: 700; z-index: 2; display: flex; align-items: center; gap: 6px;">
+                            <i class="fas fa-thumbtack"></i> Закреплено
+                        </div>
+                        <img class="news-image" src="images/news-1.jpg" alt="Набор в группы">
+                        <div class="news-body">
+                            <div class="news-date"><i class="fas fa-calendar-alt"></i> 1 сентября 2026</div>
+                            <h4>🔥 Открыт набор в группы 6–9 лет и 18+!</h4>
+                            <p>Начинаем набор детей 6–9 лет и взрослых 18+. Первое пробное занятие бесплатно. Успейте записаться!</p>
+                            <a href="news/news-1.html" class="news-read-more" style="color: #ff8c42;">Подробнее <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- НОВОСТЬ 2 -->
+                    <div class="news-card">
+                        <img class="news-image" src="images/news-2.jpg" alt="Победа в турнире">
+                        <div class="news-body">
+                            <div class="news-date"><i class="fas fa-calendar-alt"></i> 15 сентября 2026</div>
+                            <h4>🏆 Победа на городском турнире!</h4>
+                            <p>Наша команда «Самарские Орлы» заняла 1 место в ежегодном городском турнире по баскетболу. Поздравляем!</p>
+                            <a href="news/news-2.html" class="news-read-more">Читать далее <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- НОВОСТЬ 3 -->
+                    <div class="news-card">
+                        <img class="news-image" src="images/news-3.jpg" alt="Набор в группы">
+                        <div class="news-body">
+                            <div class="news-date"><i class="fas fa-calendar-alt"></i> 10 сентября 2026</div>
+                            <h4>📢 Открыт набор в новые группы</h4>
+                            <p>Начинаем набор детей 6–9 лет и взрослых 18+. Первое пробное занятие бесплатно. Успейте записаться!</p>
+                            <a href="news/news-3.html" class="news-read-more">Подробнее <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- НОВОСТЬ 4 -->
+                    <div class="news-card">
+                        <img class="news-image" src="images/news-4.jpg" alt="Спортивный лагерь">
+                        <div class="news-body">
+                            <div class="news-date"><i class="fas fa-calendar-alt"></i> 5 сентября 2026</div>
+                            <h4>🏕️ Спортивный лагерь — осень 2026</h4>
+                            <p>Объявляем набор на осенний спортивный лагерь для детей 10–16 лет. Тренировки, игры и новые друзья!</p>
+                            <a href="news/news-4.html" class="news-read-more">Читать далее <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- НОВОСТЬ 5 -->
+                    <div class="news-card">
+                        <img class="news-image" src="images/news-5.jpg" alt="День открытых дверей">
+                        <div class="news-body">
+                            <div class="news-date"><i class="fas fa-calendar-alt"></i> 28 августа 2026</div>
+                            <h4>🎉 День открытых дверей</h4>
+                            <p>Приходите на День открытых дверей 20 сентября! Знакомство с тренерами, пробные тренировки и скидки.</p>
+                            <a href="news/news-5.html" class="news-read-more">Читать далее <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- НОВОСТЬ 6 -->
+                    <div class="news-card">
+                        <img class="news-image" src="images/news-6.jpg" alt="Выпускной">
+                        <div class="news-body">
+                            <div class="news-date"><i class="fas fa-calendar-alt"></i> 15 августа 2026</div>
+                            <h4>🎓 Выпускной наших учеников</h4>
+                            <p>Состоялся выпускной вечер для наших учеников. 25 человек успешно завершили годовой курс обучения.</p>
+                            <a href="news/news-6.html" class="news-read-more">Читать далее <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
                 </div>
                 <button class="carousel-btn prev" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
                 <button class="carousel-btn next" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
@@ -2084,8 +2202,8 @@
         </div>
     </section>
 
-        <!-- ==========================================
-    ПОДВАЛ — ОБНОВЛЕННЫЙ
+    <!-- ==========================================
+    ПОДВАЛ
     ========================================== -->
     <footer class="footer">
         <div class="container">
