@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Победа на городском турнире! — Легенда</title>
-    <meta name="description" content="Наша команда «Самарские Орлы» заняла 1 место в ежегодном городском турнире по баскетболу.">
+    <title>Набор в баскетбольный клуб Легенда — Легенда</title>
+    <meta name="description" content="Баскетбольный клуб Легенда объявляет набор на новый сезон! Приглашаем всех желающих — от малышей до взрослых. Первое занятие бесплатно!">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -75,7 +75,7 @@
             height: 450px;
             aspect-ratio: 16 / 9;
             object-fit: cover;
-            object-position: center;
+            object-position: top center;
             border-radius: 16px;
             margin-bottom: 30px;
             background: #f5f8fc;
@@ -91,6 +91,58 @@
             margin-bottom: 16px;
         }
 
+        .news-article .news-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 16px 0;
+        }
+
+        .news-article .news-content ul li {
+            padding: 6px 0 6px 28px;
+            position: relative;
+        }
+
+        .news-article .news-content ul li::before {
+            content: '✅';
+            position: absolute;
+            left: 0;
+        }
+
+        .news-article .cta-block {
+            background: linear-gradient(135deg, #ff8c42, #ff6a00);
+            border-radius: 16px;
+            padding: 30px 40px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .news-article .cta-block h3 {
+            color: #fff;
+            font-size: 22px;
+            margin-bottom: 6px;
+        }
+
+        .news-article .cta-block p {
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 16px;
+        }
+
+        .news-article .cta-block .btn {
+            display: inline-block;
+            background: #fff;
+            color: #ff8c42;
+            padding: 12px 36px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .news-article .cta-block .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
         @media (max-width: 768px) {
             .news-article {
                 padding: 130px 0 40px;
@@ -102,6 +154,14 @@
 
             .news-article .news-image-full {
                 height: 300px;
+            }
+
+            .news-article .cta-block {
+                padding: 20px;
+            }
+
+            .news-article .cta-block h3 {
+                font-size: 18px;
             }
         }
 
@@ -150,19 +210,32 @@
                 <i class="fas fa-arrow-left"></i> Все новости
             </a>
 
-            <h1>🏆 Победа на городском турнире!</h1>
-            <span class="news-date"><i class="fas fa-calendar-alt"></i> 15 сентября 2026</span>
+            <h1>🔥 Открыт набор в баскетбольный клуб «Легенда»!</h1>
+            <span class="news-date"><i class="fas fa-calendar-alt"></i> 1 сентября 2026</span>
 
-            <img class="news-image-full" src="../images/news-2.jpg" alt="Победа на городском турнире">
+            <img class="news-image-full" src="../images/news-2.jpg" alt="Набор в баскетбольный клуб Легенда">
 
             <div class="news-content">
-                <p>Наша команда <strong>«Самарские Орлы»</strong> одержала яркую победу в ежегодном городском турнире по баскетболу среди юношеских команд!</p>
-                
-                <p>В финальном матче наши спортсмены показали настоящий характер и мастерство, обыграв соперников со счетом <strong>78:65</strong>. Это вторая победа команды в этом турнире за последние три года.</p>
+                <p>Баскетбольный клуб <strong>«Легенда»</strong> объявляет набор на новый сезон!</p>
+                <p>Мы приглашаем <strong>всех желающих — от малышей до взрослых</strong>, независимо от уровня подготовки. В нашем клубе каждый найдёт подходящую группу, удобное расписание и возможность развиваться в комфортной атмосфере.</p>
 
-                <p>Тренер команды Александр Иванов отметил отличную командную работу и высокий уровень подготовки игроков. Особо были отмечены успехи капитана команды и молодых игроков, которые в этом сезоне значительно прибавили в мастерстве.</p>
+                <p><strong>Что входит в программу:</strong></p>
+                <ul>
+                    <li>Развитие базовых навыков: ведение, бросок, передача, защита</li>
+                    <li>Игровая практика и тактические занятия</li>
+                    <li>Товарищеские матчи и участие в турнирах</li>
+                    <li>Физическая подготовка и работа над выносливостью</li>
+                </ul>
 
-                <p>Поздравляем наших спортсменов и желаем им новых побед!</p>
+                <p><strong>Первое пробное занятие — бесплатно!</strong><br>
+                Это отличная возможность познакомиться с тренерами, командой и атмосферой клуба. Ждём вас в «Легенде»!</p>
+            </div>
+
+            <!-- БЛОК С ПРИЗЫВОМ К ДЕЙСТВИЮ -->
+            <div class="cta-block">
+                <h3>Запишитесь на пробное занятие!</h3>
+                <p>Сделайте первый шаг к своей цели — приходите, мы ждём вас!</p>
+                <a href="../index.html#signup" class="btn">Записаться сейчас →</a>
             </div>
         </div>
     </section>

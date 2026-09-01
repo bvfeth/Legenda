@@ -596,6 +596,8 @@
             border: 1px solid rgba(0, 0, 0, 0.04);
             transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
             flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
         }
 
         .news-card:hover {
@@ -611,6 +613,7 @@
             object-position: top center;
             transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
             background: #f5f8fc;
+            flex-shrink: 0;
         }
 
         .news-card:hover .news-image {
@@ -619,6 +622,9 @@
 
         .news-card .news-body {
             padding: 20px 24px 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .news-card .news-date {
@@ -641,16 +647,7 @@
             margin-bottom: 8px;
             color: #0b1a2e;
             line-height: 1.3;
-        }
-
-        .news-card p {
-            color: #475569;
-            font-size: 14px;
-            line-height: 1.6;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
+            flex: 1;
         }
 
         .news-card .news-read-more {
@@ -663,6 +660,7 @@
             margin-top: 12px;
             transition: all 0.3s;
             cursor: pointer;
+            align-self: flex-start;
         }
 
         .news-card .news-read-more:hover {
@@ -671,39 +669,39 @@
         }
 
         .carousel-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 52px;
-            height: 52px;
-            border-radius: 50%;
-            background: #fff;
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            color: #1a2332;
-            font-size: 20px;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid #ff8c42;
+    color: #ff8c42;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-        .carousel-btn:hover {
-            background: #ff8c42;
-            color: #fff;
-            transform: translateY(-50%) scale(1.1);
-            box-shadow: 0 8px 30px rgba(255, 140, 66, 0.3);
-        }
+.carousel-btn:hover {
+    background: #ff8c42;
+    color: #fff;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 8px 30px rgba(255, 140, 66, 0.3);
+}
 
-        .carousel-btn.prev {
-            left: -26px;
-        }
+.carousel-btn.prev {
+    left: 10px;
+}
 
-        .carousel-btn.next {
-            right: -26px;
-        }
+.carousel-btn.next {
+    right: 10px;
+}
 
         .carousel-dots {
             display: flex;
@@ -920,7 +918,6 @@
             width: 18px;
         }
 
-        /* Кнопки навигации карусели залов */
         .halls-carousel-btn {
             position: absolute;
             top: 50%;
@@ -959,7 +956,6 @@
             right: -20px;
         }
 
-        /* Индикаторы для залов */
         .halls-dots {
             display: flex;
             justify-content: center;
@@ -999,7 +995,6 @@
             margin: 0 auto;
         }
 
-        /* Первые 3 карточки — в верхнем ряду */
         .prices-grid .price-card:nth-child(1),
         .prices-grid .price-card:nth-child(2),
         .prices-grid .price-card:nth-child(3) {
@@ -1007,7 +1002,6 @@
             width: 100%;
         }
 
-        /* 4-я и 5-я карточки — в нижнем ряду по центру */
         .prices-grid .price-card:nth-child(4) {
             grid-column: 1 / 2;
             grid-row: 2;
@@ -1177,7 +1171,6 @@
             padding-right: 40px;
         }
 
-        /* Стили для чекбокса согласия */
         .checkbox-group {
             display: flex;
             align-items: flex-start;
@@ -1374,10 +1367,9 @@
         }
 
         /* ==========================================
-                   АДАПТИВНОСТЬ — СУЖЕННЫЙ КОНТЕЙНЕР ДЛЯ ТЕЛЕФОНОВ
+                   АДАПТИВНОСТЬ
                 ========================================== */
 
-        /* ПЛАНШЕТЫ (до 1024px) */
         @media (max-width: 1024px) {
             .hero .container {
                 grid-template-columns: 1fr;
@@ -1469,11 +1461,11 @@
             }
 
             .carousel-btn.prev {
-                left: -10px;
+                left: 40px;
             }
 
             .carousel-btn.next {
-                right: -10px;
+                right: 40px;
             }
 
             .footer-grid {
@@ -1481,7 +1473,6 @@
             }
         }
 
-        /* МОБИЛЬНЫЕ (до 768px) */
         @media (max-width: 768px) {
             .header {
                 padding: 10px 0;
@@ -1636,7 +1627,6 @@
                 text-align: center;
             }
 
-            /* ====== КОНТЕЙНЕР И НОВОСТИ ДЛЯ МОБИЛЬНЫХ ====== */
             .container {
                 padding: 0 10px;
             }
@@ -1660,9 +1650,6 @@
 
             .news-card .news-image {
                 height: 140px;
-                aspect-ratio: 16 / 9;
-                object-fit: cover;
-                object-position: top center;
             }
 
             .news-card .news-body {
@@ -1702,17 +1689,17 @@
             }
 
             .carousel-btn {
-                width: 30px;
-                height: 30px;
-                font-size: 12px;
+                width: 38px;
+                height: 38px;
+                font-size: 14px;
             }
 
             .carousel-btn.prev {
-                left: 4px;
+                left: 16px;
             }
 
             .carousel-btn.next {
-                right: 4px;
+                right: 16px;
             }
 
             .carousel-dots {
@@ -1726,7 +1713,6 @@
             }
         }
 
-        /* МАЛЕНЬКИЕ ТЕЛЕФОНЫ (до 480px) */
         @media (max-width: 480px) {
             .container {
                 padding: 0 8px;
@@ -1792,7 +1778,6 @@
                 max-width: 100%;
             }
 
-            /* ====== НОВОСТИ ДЛЯ МАЛЕНЬКИХ ТЕЛЕФОНОВ ====== */
             .news-section {
                 padding: 20px 0;
             }
@@ -1807,9 +1792,6 @@
 
             .news-card .news-image {
                 height: 110px;
-                aspect-ratio: 16 / 9;
-                object-fit: cover;
-                object-position: top center;
             }
 
             .news-card .news-body {
@@ -1856,17 +1838,18 @@
             }
 
             .carousel-btn {
-                width: 26px;
-                height: 26px;
-                font-size: 10px;
+                width: 32px;
+                height: 32px;
+                font-size: 12px;
+                border-width: 2px;
             }
 
             .carousel-btn.prev {
-                left: 2px;
+                left: 8px;
             }
 
             .carousel-btn.next {
-                right: 2px;
+                right: 8px;
             }
 
             .carousel-dots {
@@ -1880,7 +1863,6 @@
             }
         }
 
-        /* ОЧЕНЬ МАЛЕНЬКИЕ ТЕЛЕФОНЫ (до 380px) */
         @media (max-width: 380px) {
             .container {
                 padding: 0 6px;
@@ -2010,18 +1992,17 @@
                 <div class="news-track" id="newsTrack">
                     
                     <!-- ЗАКРЕПЛЕННАЯ НОВОСТЬ (всегда первая) -->
-<div class="news-card pinned-news">
-    <div style="position: absolute; top: 12px; left: 12px; background: #ff8c42; color: #fff; padding: 4px 14px; border-radius: 50px; font-size: 11px; font-weight: 700; z-index: 2; display: flex; align-items: center; gap: 6px;">
-        <i class="fas fa-thumbtack"></i> Закреплено
-    </div>
-    <img class="news-image" src="images/news-1.jpg" alt="Набор в баскетбольный клуб Легенда">
-    <div class="news-body">
-        <div class="news-date"><i class="fas fa-calendar-alt"></i> 1 сентября 2026</div>
-        <h4>🔥 Открыт набор в баскетбольный клуб «Легенда»!</h4>
-        <!-- ОПИСАНИЕ УБРАНО -->
-        <a href="news/news-1.html" class="news-read-more" style="color: #ff8c42;">Подробнее <i class="fas fa-arrow-right"></i></a>
-    </div>
-</div>
+                    <div class="news-card pinned-news">
+                        <div style="position: absolute; top: 12px; left: 12px; background: #ff8c42; color: #fff; padding: 4px 14px; border-radius: 50px; font-size: 11px; font-weight: 700; z-index: 2; display: flex; align-items: center; gap: 6px;">
+                            <i class="fas fa-thumbtack"></i> Закреплено
+                        </div>
+                        <img class="news-image" src="images/news-1.jpg" alt="Набор в баскетбольный клуб Легенда">
+                        <div class="news-body">
+                            <div class="news-date"><i class="fas fa-calendar-alt"></i> 1 сентября 2026</div>
+                            <h4>🔥 Открыт набор в баскетбольный клуб «Легенда»!</h4>
+                            <a href="news/news-1.html" class="news-read-more" style="color: #ff8c42;">Подробнее <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
 
                     <!-- НОВОСТЬ 2 -->
                     <div class="news-card">
@@ -2029,7 +2010,6 @@
                         <div class="news-body">
                             <div class="news-date"><i class="fas fa-calendar-alt"></i> 15 сентября 2026</div>
                             <h4>🏆 Победа на городском турнире!</h4>
-                            <p>Наша команда «Самарские Орлы» заняла 1 место в ежегодном городском турнире по баскетболу. Поздравляем!</p>
                             <a href="news/news-2.html" class="news-read-more">Читать далее <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
@@ -2040,7 +2020,6 @@
                         <div class="news-body">
                             <div class="news-date"><i class="fas fa-calendar-alt"></i> 10 сентября 2026</div>
                             <h4>📢 Открыт набор в новые группы</h4>
-                            <p>Начинаем набор детей 6–9 лет и взрослых 18+. Первое пробное занятие бесплатно. Успейте записаться!</p>
                             <a href="news/news-3.html" class="news-read-more">Подробнее <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
@@ -2051,7 +2030,6 @@
                         <div class="news-body">
                             <div class="news-date"><i class="fas fa-calendar-alt"></i> 5 сентября 2026</div>
                             <h4>🏕️ Спортивный лагерь — осень 2026</h4>
-                            <p>Объявляем набор на осенний спортивный лагерь для детей 10–16 лет. Тренировки, игры и новые друзья!</p>
                             <a href="news/news-4.html" class="news-read-more">Читать далее <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
@@ -2062,7 +2040,6 @@
                         <div class="news-body">
                             <div class="news-date"><i class="fas fa-calendar-alt"></i> 28 августа 2026</div>
                             <h4>🎉 День открытых дверей</h4>
-                            <p>Приходите на День открытых дверей 20 сентября! Знакомство с тренерами, пробные тренировки и скидки.</p>
                             <a href="news/news-5.html" class="news-read-more">Читать далее <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
@@ -2073,7 +2050,6 @@
                         <div class="news-body">
                             <div class="news-date"><i class="fas fa-calendar-alt"></i> 15 августа 2026</div>
                             <h4>🎓 Выпускной наших учеников</h4>
-                            <p>Состоялся выпускной вечер для наших учеников. 25 человек успешно завершили годовой курс обучения.</p>
                             <a href="news/news-6.html" class="news-read-more">Читать далее <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
@@ -2389,7 +2365,7 @@
                         <textarea id="message" name="message" placeholder="Хочу записаться на пробное занятие. Удобно в субботу утром."></textarea>
                     </div>
 
-                    <!-- ГАЛОЧКА СОГЛАСИЯ -->
+                    <!-- ГАЛОЧКА СОГЛАСИЯ НА ОБРАБОТКУ ПЕРСОНАЛЬНЫХ ДАННЫХ -->
                     <div class="checkbox-group">
                         <input type="checkbox" id="agree" name="agree" required>
                         <label for="agree">
@@ -2799,7 +2775,7 @@
         }
 
         // =====================
-        // 9. ОТПРАВКА ФОРМЫ
+        // 9. ОТПРАВКА ФОРМЫ ЧЕРЕЗ CLOUDFLARE WORKER
         // =====================
         async function sendForm(event) {
             event.preventDefault();
