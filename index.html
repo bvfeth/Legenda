@@ -598,6 +598,7 @@
             flex-shrink: 0;
             display: flex;
             flex-direction: column;
+            cursor: pointer;
         }
 
         .news-card:hover {
@@ -669,39 +670,39 @@
         }
 
         .carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: #fff;
-    border: 2px solid #ff8c42;
-    color: #ff8c42;
-    font-size: 18px;
-    cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #fff;
+            border: 2px solid #ff8c42;
+            color: #ff8c42;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-.carousel-btn:hover {
-    background: #ff8c42;
-    color: #fff;
-    transform: translateY(-50%) scale(1.1);
-    box-shadow: 0 8px 30px rgba(255, 140, 66, 0.3);
-}
+        .carousel-btn:hover {
+            background: #ff8c42;
+            color: #fff;
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 8px 30px rgba(255, 140, 66, 0.3);
+        }
 
-.carousel-btn.prev {
-    left: 10px;
-}
+        .carousel-btn.prev {
+            left: 10px;
+        }
 
-.carousel-btn.next {
-    right: 10px;
-}
+        .carousel-btn.next {
+            right: 10px;
+        }
 
         .carousel-dots {
             display: flex;
@@ -2015,14 +2016,14 @@
                     </div>
 
                     <!-- НОВОСТЬ 3 -->
-<div class="news-card">
-    <img class="news-image" src="images/news-3.jpg" alt="Детская баскетбольная лига 5х5">
-    <div class="news-body">
-        <div class="news-date"><i class="fas fa-calendar-alt"></i> 10 сентября 2026</div>
-        <h4>🏀 «Легенда» запускает детскую баскетбольную лигу 5х5!</h4>
-        <a href="news/news-3.html" class="news-read-more">Подробнее <i class="fas fa-arrow-right"></i></a>
-    </div>
-</div>
+                    <div class="news-card">
+                        <img class="news-image" src="images/news-3.jpg" alt="Детская баскетбольная лига 5х5">
+                        <div class="news-body">
+                            <div class="news-date"><i class="fas fa-calendar-alt"></i> 10 сентября 2026</div>
+                            <h4>🏀 «Легенда» запускает детскую баскетбольную лигу 5х5!</h4>
+                            <a href="news/news-3.html" class="news-read-more">Подробнее <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
 
                     <!-- НОВОСТЬ 4 -->
                     <div class="news-card">
@@ -2809,6 +2810,25 @@
                 submitBtn.disabled = false;
             }
         }
+
+        // =====================
+        // 10. КЛИК ПО КАРТОЧКЕ НОВОСТИ
+        // =====================
+        document.querySelectorAll('.news-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                // Если клик был по ссылке "Подробнее" — не мешаем
+                if (e.target.closest('.news-read-more')) return;
+                
+                // Находим ссылку внутри карточки
+                const link = this.querySelector('.news-read-more');
+                if (link) {
+                    window.location.href = link.getAttribute('href');
+                }
+            });
+            
+            // Добавляем курсор-указатель
+            card.style.cursor = 'pointer';
+        });
     </script>
 
 </body>
