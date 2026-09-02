@@ -2550,52 +2550,83 @@
         if (heroStats) statsObserver.observe(heroStats);
 
         // =====================
-        // 7. НОВОСТИ — КАРУСЕЛЬ
-        // =====================
-        const newsTrack = document.getElementById('newsTrack');
-        const newsPrevBtn = document.getElementById('prevBtn');
-        const newsNextBtn = document.getElementById('nextBtn');
-        const newsDots = document.getElementById('carouselDots');
+// 7. НОВОСТИ — КАРУСЕЛЬ
+// =====================
+const newsTrack = document.getElementById('newsTrack');
+const newsPrevBtn = document.getElementById('prevBtn');
+const newsNextBtn = document.getElementById('nextBtn');
+const newsDots = document.getElementById('carouselDots');
 
-        if (newsTrack) {
-            const cards = newsTrack.querySelectorAll('.news-card');
-            let currentIndex = 0;
-            const totalSlides = 2;
+if (newsTrack) {
+    const cards = newsTrack.querySelectorAll('.news-card');
+    let currentIndex = 0;
+    
+    function getVisibleCount() {
+        if (window.innerWidth >= 1024) return 3;
+        if (window.innerWidth >= 768) return 2;
+        return 1;
+    }
+    
+    function getTotalSlides() {
+    const visible = getVisibleCount();
+    // Если видно 3 карточки — всё равно показываем 2 слайда
+    if (visible >= 3) return 2;
+    return cards.length - visible + 1;
+}
 
-            for (let i = 0; i < totalSlides; i++) {
-                const dot = document.createElement('button');
-                dot.className = 'dot' + (i === 0 ? ' active' : '');
-                dot.dataset.index = i;
-                dot.addEventListener('click', () => goToSlide(i));
-                newsDots.appendChild(dot);
-            }
-
-            function goToSlide(index) {
-                if (index < 0) index = totalSlides - 1;
-                if (index >= totalSlides) index = 0;
-                currentIndex = index;
-
-                const gap = 30;
-                const cardFullWidth = cards[0]?.offsetWidth + gap || 0;
-                const offset = currentIndex * cardFullWidth;
-                newsTrack.style.transform = `translateX(-${offset}px)`;
-
-                document.querySelectorAll('#carouselDots .dot').forEach((dot, i) => {
-                    dot.classList.toggle('active', i === currentIndex);
-                });
-            }
-
-            newsPrevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
-            newsNextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
-
-            let autoplayInterval = setInterval(() => goToSlide(currentIndex + 1), 5000);
-
-            const carousel = document.querySelector('.news-carousel');
-            carousel.addEventListener('mouseenter', () => clearInterval(autoplayInterval));
-            carousel.addEventListener('mouseleave', () => {
-                autoplayInterval = setInterval(() => goToSlide(currentIndex + 1), 5000);
-            });
+    // Создаём точки
+    function createDots() {
+        const totalSlides = getTotalSlides();
+        newsDots.innerHTML = '';
+        for (let i = 0; i < totalSlides; i++) {
+            const dot = document.createElement('button');
+            dot.className = 'dot' + (i === currentIndex ? ' active' : '');
+            dot.dataset.index = i;
+            dot.addEventListener('click', () => goToSlide(i));
+            newsDots.appendChild(dot);
         }
+    }
+
+    createDots();
+
+    function goToSlide(index) {
+        const totalSlides = getTotalSlides();
+        if (index < 0) index = totalSlides - 1;
+        if (index >= totalSlides) index = 0;
+        currentIndex = index;
+
+        const gap = 30;
+        const cardFullWidth = cards[0]?.offsetWidth + gap || 0;
+        const offset = currentIndex * cardFullWidth;
+        newsTrack.style.transform = `translateX(-${offset}px)`;
+
+        document.querySelectorAll('#carouselDots .dot').forEach((dot, i) => {
+            dot.classList.toggle('active', i === currentIndex);
+        });
+    }
+
+    newsPrevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
+    newsNextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
+
+    let autoplayInterval = setInterval(() => goToSlide(currentIndex + 1), 5000);
+
+    const carousel = document.querySelector('.news-carousel');
+    carousel.addEventListener('mouseenter', () => clearInterval(autoplayInterval));
+    carousel.addEventListener('mouseleave', () => {
+        autoplayInterval = setInterval(() => goToSlide(currentIndex + 1), 5000);
+    });
+
+    // Пересчёт при изменении размера экрана
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            currentIndex = 0;
+            createDots();
+            goToSlide(0);
+        }, 300);
+    });
+}
 
         // =====================
         // 8. ЗАЛЫ — КАРУСЕЛЬ
