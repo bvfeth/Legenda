@@ -301,7 +301,6 @@
             padding: 120px 0 80px;
         }
 
-        /* ФОНОВОЕ ИЗОБРАЖЕНИЕ НА ВЕСЬ ЭКРАН */
         .hero-bg {
             position: absolute;
             top: 0;
@@ -313,7 +312,6 @@
             pointer-events: none;
         }
 
-        /* ТЁМНОЕ ЗАТЕМНЕНИЕ ПОВЕРХ ФОТО */
         .hero-overlay {
             position: absolute;
             top: 0;
@@ -334,12 +332,10 @@
             align-items: center;
         }
 
-        /* ЛЕВАЯ ЧАСТЬ — КОНТЕНТ */
         .hero-content {
             text-align: left;
         }
 
-        /* ЛОГОТИП НА ПЕРЕДНЕМ ПЛАНЕ — СПРАВА */
         .hero-logo {
             display: flex;
             justify-content: flex-end;
@@ -391,8 +387,7 @@
         }
 
         @keyframes badge-pulse {
-            0%,
-            100% {
+            0%, 100% {
                 transform: scale(1);
                 box-shadow: 0 4px 30px rgba(255, 140, 66, 0.4);
             }
@@ -403,8 +398,7 @@
         }
 
         @keyframes badge-ring {
-            0%,
-            100% {
+            0%, 100% {
                 transform: scale(1);
                 opacity: 1;
             }
@@ -732,7 +726,6 @@
             background: #ff8c42;
         }
 
-        /* ====== ЗАКРЕПЛЕННАЯ НОВОСТЬ ====== */
         .pinned-news {
             border: 2px solid #ff8c42 !important;
             position: relative;
@@ -811,18 +804,10 @@
             animation: slide-in 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
         }
 
-        .about-text ul li:nth-child(1) {
-            animation-delay: 0.1s;
-        }
-        .about-text ul li:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-        .about-text ul li:nth-child(3) {
-            animation-delay: 0.3s;
-        }
-        .about-text ul li:nth-child(4) {
-            animation-delay: 0.4s;
-        }
+        .about-text ul li:nth-child(1) { animation-delay: 0.1s; }
+        .about-text ul li:nth-child(2) { animation-delay: 0.2s; }
+        .about-text ul li:nth-child(3) { animation-delay: 0.3s; }
+        .about-text ul li:nth-child(4) { animation-delay: 0.4s; }
 
         @keyframes slide-in {
             to {
@@ -845,7 +830,7 @@
                    ЗАЛЫ — КАРУСЕЛЬ (15 залов)
                 ========================================== */
         .halls-carousel-section {
-            background: #ffffff;
+            background: #f5f8fc;
             padding: 80px 0;
             position: relative;
             z-index: 1;
@@ -865,49 +850,51 @@
 
         .hall-slide {
             min-width: calc(33.333% - 20px);
-            background: #fff;
+            background: linear-gradient(135deg, #0b1a2e, #1a2d47);
             border-radius: 24px;
             overflow: hidden;
-            border: 1px solid rgba(0, 0, 0, 0.04);
+            border: 2px solid rgba(255, 140, 66, 0.3);
+            box-shadow: 0 4px 20px rgba(11, 26, 46, 0.2);
             transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
             flex-shrink: 0;
         }
 
         .hall-slide:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
-        }
-
-        .hall-slide .hall-image {
-            width: 100%;
-            height: 240px;
-            object-fit: cover;
-            transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        .hall-slide:hover .hall-image {
-            transform: scale(1.04);
+            border-color: #ff8c42;
+            box-shadow: 0 12px 40px rgba(255, 140, 66, 0.3);
+            background: linear-gradient(135deg, #0f2138, #1e3555);
         }
 
         .hall-slide .hall-body {
-            padding: 20px 24px 24px;
+            padding: 24px 28px 28px;
         }
 
         .hall-slide .hall-icon {
-            font-size: 24px;
+            font-size: 28px;
             color: #ff8c42;
-            margin-bottom: 4px;
+            margin-bottom: 8px;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .hall-slide:hover .hall-icon {
+            transform: scale(1.2) rotate(-10deg);
         }
 
         .hall-slide h4 {
             font-size: 18px;
             font-weight: 700;
-            margin-bottom: 4px;
-            color: #0b1a2e;
+            margin-bottom: 6px;
+            color: #ffffff;
+            transition: color 0.3s;
+        }
+
+        .hall-slide:hover h4 {
+            color: #ff8c42;
         }
 
         .hall-slide .hall-address {
-            color: #64748b;
+            color: #94a3b8;
             font-size: 14px;
             display: flex;
             align-items: center;
@@ -1352,8 +1339,7 @@
         }
 
         @keyframes heartbeat {
-            0%,
-            100% {
+            0%, 100% {
                 transform: scale(1);
             }
             25% {
@@ -1370,7 +1356,6 @@
         /* ==========================================
                    АДАПТИВНОСТЬ
                 ========================================== */
-
         @media (max-width: 1024px) {
             .hero .container {
                 grid-template-columns: 1fr;
@@ -1986,7 +1971,7 @@
     ========================================== -->
     <section class="news-section" id="news">
         <div class="container">
-            <h2 class="section-title text-center"><i class="fas fa-newspaper"></i> Новости школы</h2>
+            <h2 class="section-title text-center"><i class="fas fa-newspaper"></i> Новости клуба</h2>
             <p class="section-subtitle text-center">Следите за событиями и достижениями наших учеников</p>
 
             <div class="news-carousel">
@@ -2009,7 +1994,7 @@
                     <div class="news-card">
                         <img class="news-image" src="images/news-2.jpg" alt="Победа в турнире">
                         <div class="news-body">
-                            <div class="news-date"><i class="fas fa-calendar-alt"></i> 15 сентября 2026</div>
+                            <div class="news-date"><i class="fas fa-calendar-alt"></i> 30 августа 2026</div>
                             <h4>🏆 Победа в турнире 3х3 «Урам-фест»!</h4>
                             <a href="news/news-2.html" class="news-read-more">Подробнее <i class="fas fa-arrow-right"></i></a>
                         </div>
@@ -2019,39 +2004,9 @@
                     <div class="news-card">
                         <img class="news-image" src="images/news-3.jpg" alt="Детская баскетбольная лига 5х5">
                         <div class="news-body">
-                            <div class="news-date"><i class="fas fa-calendar-alt"></i> 10 сентября 2026</div>
+                            <div class="news-date"><i class="fas fa-calendar-alt"></i> 1 сентября 2026</div>
                             <h4>🏀 «Легенда» запускает детскую баскетбольную лигу 5х5!</h4>
                             <a href="news/news-3.html" class="news-read-more">Подробнее <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-
-                    <!-- НОВОСТЬ 4 -->
-                    <div class="news-card">
-                        <img class="news-image" src="images/news-4.jpg" alt="Спортивный лагерь">
-                        <div class="news-body">
-                            <div class="news-date"><i class="fas fa-calendar-alt"></i> 5 сентября 2026</div>
-                            <h4>🏕️ Спортивный лагерь — осень 2026</h4>
-                            <a href="news/news-4.html" class="news-read-more">Подробнее <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-
-                    <!-- НОВОСТЬ 5 -->
-                    <div class="news-card">
-                        <img class="news-image" src="images/news-5.jpg" alt="День открытых дверей">
-                        <div class="news-body">
-                            <div class="news-date"><i class="fas fa-calendar-alt"></i> 28 августа 2026</div>
-                            <h4>🎉 День открытых дверей</h4>
-                            <a href="news/news-5.html" class="news-read-more">Подробнее <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-
-                    <!-- НОВОСТЬ 6 -->
-                    <div class="news-card">
-                        <img class="news-image" src="images/news-6.jpg" alt="Выпускной">
-                        <div class="news-body">
-                            <div class="news-date"><i class="fas fa-calendar-alt"></i> 15 августа 2026</div>
-                            <h4>🎓 Выпускной наших учеников</h4>
-                            <a href="news/news-6.html" class="news-read-more">Подробнее <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
 
@@ -2111,7 +2066,6 @@
                 <div class="halls-track" id="hallsTrack">
                     <!-- ЗАЛ 1 -->
                     <div class="hall-slide">
-                        <img class="hall-image" src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&h=400&fit=crop" alt="Дворец Спорта им. Владимира Высоцкого">
                         <div class="hall-body">
                             <div class="hall-icon"><i class="fas fa-basketball-ball"></i></div>
                             <h4>Дворец Спорта им. Владимира Высоцкого</h4>
@@ -2123,7 +2077,6 @@
 
                     <!-- ЗАЛ 2 -->
                     <div class="hall-slide">
-                        <img class="hall-image" src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&h=400&fit=crop" alt="СК СамГУПС">
                         <div class="hall-body">
                             <div class="hall-icon"><i class="fas fa-basketball-ball"></i></div>
                             <h4>СК "СамГУПС"</h4>
@@ -2135,7 +2088,6 @@
 
                     <!-- ЗАЛ 3 -->
                     <div class="hall-slide">
-                        <img class="hall-image" src="https://images.unsplash.com/photo-1519861531473-9200262188bf?w=600&h=400&fit=crop" alt="СК 7 Кортов">
                         <div class="hall-body">
                             <div class="hall-icon"><i class="fas fa-basketball-ball"></i></div>
                             <h4>СК "7 Кортов"</h4>
@@ -2147,7 +2099,6 @@
 
                     <!-- ЗАЛ 4 -->
                     <div class="hall-slide">
-                        <img class="hall-image" src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&h=400&fit=crop" alt="ФСК Волжский">
                         <div class="hall-body">
                             <div class="hall-icon"><i class="fas fa-basketball-ball"></i></div>
                             <h4>ФСК «Волжский»</h4>
@@ -2159,7 +2110,6 @@
 
                     <!-- ЗАЛ 5 -->
                     <div class="hall-slide">
-                        <img class="hall-image" src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&h=400&fit=crop" alt="СК Кристалл">
                         <div class="hall-body">
                             <div class="hall-icon"><i class="fas fa-basketball-ball"></i></div>
                             <h4>СК "Кристалл"</h4>
@@ -2171,7 +2121,6 @@
 
                     <!-- ЗАЛ 6 -->
                     <div class="hall-slide">
-                        <img class="hall-image" src="https://images.unsplash.com/photo-1519861531473-9200262188bf?w=600&h=400&fit=crop" alt="Гимназия № 11">
                         <div class="hall-body">
                             <div class="hall-icon"><i class="fas fa-basketball-ball"></i></div>
                             <h4>Гимназия № 11</h4>
@@ -2183,7 +2132,6 @@
 
                     <!-- ЗАЛ 7 -->
                     <div class="hall-slide">
-                        <img class="hall-image" src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&h=400&fit=crop" alt="ФСК Факел">
                         <div class="hall-body">
                             <div class="hall-icon"><i class="fas fa-basketball-ball"></i></div>
                             <h4>ФСК «Факел»</h4>
@@ -2195,7 +2143,6 @@
 
                     <!-- ЗАЛ 8 -->
                     <div class="hall-slide">
-                        <img class="hall-image" src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&h=400&fit=crop" alt="Дом физкультуры">
                         <div class="hall-body">
                             <div class="hall-icon"><i class="fas fa-basketball-ball"></i></div>
                             <h4>Дом физкультуры</h4>
@@ -2207,10 +2154,9 @@
 
                     <!-- ЗАЛ 9 -->
                     <div class="hall-slide">
-                        <img class="hall-image" src="https://images.unsplash.com/photo-1519861531473-9200262188bf?w=600&h=400&fit=crop" alt="ЦСК ВВС">
                         <div class="hall-body">
                             <div class="hall-icon"><i class="fas fa-basketball-ball"></i></div>
-                            <h4>ЦСК ВВС</h4>
+                            <h4>ЦСКА</h4>
                             <div class="hall-address">
                                 <i class="fas fa-map-marker-alt"></i> ул. Стара-Загора, 143А
                             </div>
@@ -2219,7 +2165,6 @@
 
                     <!-- ЗАЛ 10 -->
                     <div class="hall-slide">
-                        <img class="hall-image" src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&h=400&fit=crop" alt="СК Старт">
                         <div class="hall-body">
                             <div class="hall-icon"><i class="fas fa-basketball-ball"></i></div>
                             <h4>СК "Старт"</h4>
@@ -2231,7 +2176,6 @@
 
                     <!-- ЗАЛ 11 -->
                     <div class="hall-slide">
-                        <img class="hall-image" src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&h=400&fit=crop" alt="Волгарь Арена">
                         <div class="hall-body">
                             <div class="hall-icon"><i class="fas fa-basketball-ball"></i></div>
                             <h4>Волгарь Арена</h4>
@@ -2243,7 +2187,6 @@
 
                     <!-- ЗАЛ 12 -->
                     <div class="hall-slide">
-                        <img class="hall-image" src="https://images.unsplash.com/photo-1519861531473-9200262188bf?w=600&h=400&fit=crop" alt="Зал на ул. Степана Разина">
                         <div class="hall-body">
                             <div class="hall-icon"><i class="fas fa-basketball-ball"></i></div>
                             <h4>Зал на ул. Степана Разина</h4>
@@ -2255,7 +2198,6 @@
 
                     <!-- ЗАЛ 13 -->
                     <div class="hall-slide">
-                        <img class="hall-image" src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&h=400&fit=crop" alt="Зал на ул. Стара-Загора">
                         <div class="hall-body">
                             <div class="hall-icon"><i class="fas fa-basketball-ball"></i></div>
                             <h4>Зал на ул. Стара-Загора</h4>
@@ -2267,7 +2209,6 @@
 
                     <!-- ЗАЛ 14 -->
                     <div class="hall-slide">
-                        <img class="hall-image" src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&h=400&fit=crop" alt="Школа №148">
                         <div class="hall-body">
                             <div class="hall-icon"><i class="fas fa-basketball-ball"></i></div>
                             <h4>Школа №148</h4>
@@ -2279,7 +2220,6 @@
 
                     <!-- ЗАЛ 15 -->
                     <div class="hall-slide">
-                        <img class="hall-image" src="https://images.unsplash.com/photo-1519861531473-9200262188bf?w=600&h=400&fit=crop" alt="Школа №132">
                         <div class="hall-body">
                             <div class="hall-icon"><i class="fas fa-basketball-ball"></i></div>
                             <h4>Школа №132</h4>
@@ -2338,7 +2278,6 @@
                         <input type="text" id="age" name="age" placeholder="Например: 12 лет" required>
                     </div>
 
-                    <!-- ПОЛЕ: Какой адрес вас устраивает? -->
                     <div class="form-group">
                         <label for="address"><i class="fas fa-map-marker-alt"></i> Какой адрес вас устраивает?</label>
                         <select id="address" name="address">
@@ -2366,7 +2305,6 @@
                         <textarea id="message" name="message" placeholder="Хочу записаться на пробное занятие. Удобно в субботу утром."></textarea>
                     </div>
 
-                    <!-- ГАЛОЧКА СОГЛАСИЯ НА ОБРАБОТКУ ПЕРСОНАЛЬНЫХ ДАННЫХ -->
                     <div class="checkbox-group">
                         <input type="checkbox" id="agree" name="agree" required>
                         <label for="agree">
@@ -2622,16 +2560,7 @@
         if (newsTrack) {
             const cards = newsTrack.querySelectorAll('.news-card');
             let currentIndex = 0;
-            let visibleCount = 1;
-
-            function getVisibleCount() {
-                if (window.innerWidth >= 1024) return 3;
-                if (window.innerWidth >= 768) return 2;
-                return 1;
-            }
-
-            visibleCount = getVisibleCount();
-            const totalSlides = Math.max(1, cards.length - visibleCount + 1);
+            const totalSlides = 2;
 
             for (let i = 0; i < totalSlides; i++) {
                 const dot = document.createElement('button');
@@ -2651,7 +2580,7 @@
                 const offset = currentIndex * cardFullWidth;
                 newsTrack.style.transform = `translateX(-${offset}px)`;
 
-                document.querySelectorAll('.dot').forEach((dot, i) => {
+                document.querySelectorAll('#carouselDots .dot').forEach((dot, i) => {
                     dot.classList.toggle('active', i === currentIndex);
                 });
             }
@@ -2665,31 +2594,6 @@
             carousel.addEventListener('mouseenter', () => clearInterval(autoplayInterval));
             carousel.addEventListener('mouseleave', () => {
                 autoplayInterval = setInterval(() => goToSlide(currentIndex + 1), 5000);
-            });
-
-            let resizeTimeout;
-            window.addEventListener('resize', () => {
-                clearTimeout(resizeTimeout);
-                resizeTimeout = setTimeout(() => {
-                    const newVisible = getVisibleCount();
-                    if (newVisible !== visibleCount) {
-                        visibleCount = newVisible;
-                        const newTotal = Math.max(1, cards.length - visibleCount + 1);
-                        newsDots.innerHTML = '';
-                        for (let i = 0; i < newTotal; i++) {
-                            const dot = document.createElement('button');
-                            dot.className = 'dot' + (i === 0 ? ' active' : '');
-                            dot.dataset.index = i;
-                            dot.addEventListener('click', () => goToSlide(i));
-                            newsDots.appendChild(dot);
-                        }
-                        goToSlide(0);
-                    }
-                    const gap = 30;
-                    const cardFullWidth = cards[0]?.offsetWidth + gap || 0;
-                    const offset = currentIndex * cardFullWidth;
-                    newsTrack.style.transform = `translateX(-${offset}px)`;
-                }, 300);
             });
         }
 
@@ -2713,7 +2617,7 @@
             }
 
             hallsVisible = getHallsVisible();
-            const totalHallsSlides = Math.max(1, halls.length - hallsVisible + 1);
+            const totalHallsSlides = Math.max(1, halls.length - hallsVisible);
 
             for (let i = 0; i < totalHallsSlides; i++) {
                 const dot = document.createElement('button');
@@ -2756,7 +2660,7 @@
                     const newVisible = getHallsVisible();
                     if (newVisible !== hallsVisible) {
                         hallsVisible = newVisible;
-                        const newTotal = Math.max(1, halls.length - hallsVisible + 1);
+                        const newTotal = Math.max(1, halls.length - hallsVisible);
                         hallsDots.innerHTML = '';
                         for (let i = 0; i < newTotal; i++) {
                             const dot = document.createElement('button');
@@ -2816,17 +2720,14 @@
         // =====================
         document.querySelectorAll('.news-card').forEach(card => {
             card.addEventListener('click', function(e) {
-                // Если клик был по ссылке "Подробнее" — не мешаем
                 if (e.target.closest('.news-read-more')) return;
                 
-                // Находим ссылку внутри карточки
                 const link = this.querySelector('.news-read-more');
                 if (link) {
                     window.location.href = link.getAttribute('href');
                 }
             });
             
-            // Добавляем курсор-указатель
             card.style.cursor = 'pointer';
         });
     </script>
