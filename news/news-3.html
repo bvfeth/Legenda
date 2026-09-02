@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Детская лига 5х5 — Легенда</title>
+    <meta name="description" content="Баскетбольный клуб «Легенда» запускает собственную детскую лигу 5х5. Сезон 2026/2027. Возраст 2015-2016. Зал ЦСКА на Стара-Загоре.">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            background: #f0f4f8;
+            color: #1a2332;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .news-article {
+            padding: 160px 0 60px;
+            background: #ffffff;
+            min-height: 100vh;
+        }
+
+        .news-article .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #ff8c42;
+            font-weight: 600;
+            text-decoration: none;
+            margin-bottom: 16px;
+            transition: gap 0.3s;
+        }
+
+        .news-article .back-link:hover {
+            gap: 16px;
+        }
+
+        .news-article h1 {
+            font-size: 36px;
+            font-weight: 900;
+            color: #0b1a2e;
+            margin-bottom: 6px;
+            line-height: 1.2;
+        }
+
+        .news-article .news-date {
+            color: #64748b;
+            font-size: 14px;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .news-article .news-date i {
+            color: #ff8c42;
+            margin-right: 6px;
+        }
+
+        .news-article .news-image-full {
+            width: 100%;
+            height: auto;
+            max-height: 600px;
+            object-fit: contain;
+            border-radius: 16px;
+            margin-bottom: 30px;
+            background: #f5f8fc;
+        }
+
+        .news-article .news-content {
+            font-size: 17px;
+            color: #475569;
+            line-height: 1.9;
+        }
+
+        .news-article .news-content p {
+            margin-bottom: 16px;
+        }
+
+        .news-article .news-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 16px 0;
+        }
+
+        .news-article .news-content ul li {
+            padding: 6px 0 6px 28px;
+            position: relative;
+        }
+
+        .news-article .news-content ul li::before {
+            content: '🏀';
+            position: absolute;
+            left: 0;
+        }
+
+        .news-article .highlight-box {
+            background: linear-gradient(135deg, #fff8f2, #fff3ea);
+            border-left: 4px solid #ff8c42;
+            padding: 20px 24px;
+            border-radius: 12px;
+            margin: 24px 0;
+        }
+
+        .news-article .highlight-box h3 {
+            color: #0b1a2e;
+            font-size: 18px;
+            margin-bottom: 12px;
+            font-weight: 800;
+        }
+
+        .news-article .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin: 24px 0;
+        }
+
+        .news-article .info-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid rgba(0,0,0,0.04);
+            transition: all 0.3s;
+        }
+
+        .news-article .info-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+        }
+
+        .news-article .info-card .info-icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .news-article .info-card .info-title {
+            font-weight: 700;
+            color: #0b1a2e;
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+
+        .news-article .info-card .info-text {
+            font-size: 13px;
+            color: #64748b;
+        }
+
+        @media (max-width: 768px) {
+            .news-article {
+                padding: 130px 0 40px;
+            }
+
+            .news-article h1 {
+                font-size: 26px;
+            }
+
+            .news-article .news-image-full {
+                max-height: 500px;
+            }
+
+            .news-article .info-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .news-article {
+                padding: 120px 0 30px;
+            }
+
+            .news-article h1 {
+                font-size: 20px;
+            }
+
+            .news-article .news-image-full {
+                max-height: 400px;
+                border-radius: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==========================================
+    ШАПКА
+    ========================================== -->
+    <header style="position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 12px 0; background: rgba(11, 26, 46, 0.92); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.06);">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; max-width: 900px;">
+            <a href="../index.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+                <img src="../logo_legenda.jpg" alt="Логотип Легенда" style="height: 40px; width: auto; border-radius: 8px;">
+                <div>
+                    <div style="font-size: 22px; font-weight: 800; color: #fff;">Легенда</div>
+                    <span style="font-size: 11px; opacity: 0.6; color: #94a3b8;">Баскетбольный клуб</span>
+                </div>
+            </a>
+            <a href="../index.html#news" style="color: #ff8c42; font-weight: 600; text-decoration: none; font-size: 15px;">
+                <i class="fas fa-arrow-left"></i> Назад
+            </a>
+        </div>
+    </header>
+
+    <!-- ==========================================
+    СОДЕРЖАНИЕ НОВОСТИ
+    ========================================== -->
+    <section class="news-article">
+        <div class="container">
+            <a href="../index.html#news" class="back-link">
+                <i class="fas fa-arrow-left"></i> Все новости
+            </a>
+
+            <h1>🏀 «Легенда» запускает детскую баскетбольную лигу 5х5!</h1>
+            <span class="news-date"><i class="fas fa-calendar-alt"></i> 10 сентября 2026</span>
+
+            <img class="news-image-full" src="../images/news-3.jpg" alt="Детская баскетбольная лига 5х5">
+
+            <div class="news-content">
+                <p>Баскетбольный клуб <strong>«Легенда»</strong> объявляет о запуске собственной <strong>детской баскетбольной лиги 5х5</strong>! Это уникальная возможность для юных спортсменов почувствовать атмосферу настоящего профессионального баскетбола.</p>
+
+                <div class="highlight-box">
+                    <h3><i class="fas fa-trophy" style="color: #ff8c42; margin-right: 8px;"></i>Сезон 2026/2027</h3>
+                    <p style="margin-bottom: 0;"><strong>Возрастная категория:</strong> игроки 2015–2016 года рождения</p>
+                    <p style="margin-bottom: 0;"><strong>Место проведения:</strong> просторный и комфортный зал ЦСКА на Стара-Загоре</p>
+                </div>
+
+                <p>Мы создаём лигу, где каждый ребёнок сможет раскрыть свой потенциал, получить игровую практику и стать частью большой баскетбольной семьи. Это не просто турнир — это полноценный чемпионат с понятными правилами, статистикой и настоящими призами!</p>
+
+                <p><strong>Что ждёт участников:</strong></p>
+
+                <div class="info-grid">
+                    <div class="info-card">
+                        <div class="info-icon">📊</div>
+                        <div class="info-title">Игровая статистика МЛБЛ</div>
+                        <div class="info-text">Профессиональный учёт показателей каждого игрока</div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">📸</div>
+                        <div class="info-title">Фото и видеоотчёты</div>
+                        <div class="info-text">Яркие моменты с каждого тура</div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">🏆</div>
+                        <div class="info-title">Призы и награды</div>
+                        <div class="info-text">Памятные медали, кубки и подарки</div>
+                    </div>
+                </div>
+
+                <p>Игровая статистика будет вестись по стандартам <strong>МЛБЛ</strong> — это значит, что родители и тренеры смогут следить за прогрессом каждого юного баскетболиста в режиме реального времени.</p>
+
+                <p>Зал ЦСКА на Стара-Загоре — один из лучших в городе: просторный, светлый, с качественным покрытием и трибунами. Здесь созданы идеальные условия для проведения матчей и комфортного пребывания зрителей.</p>
+
+                <p style="font-size: 20px; font-weight: 700; color: #0b1a2e; margin-top: 24px;">🔥 Подавайте заявку и станьте частью первой детской лиги «Легенды»!</p>
+                
+                <p>Количество мест ограничено. Успейте записаться!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+    ПОДВАЛ
+    ========================================== -->
+    <footer style="background: #0b1a2e; color: #94a3b8; padding: 30px 0 20px; border-top: 1px solid rgba(255,255,255,0.04);">
+        <div class="container" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; font-size: 14px; max-width: 900px;">
+            <span>© 2026 Легенда. Все права защищены.</span>
+            <span>Сделано с ❤️ для баскетбола</span>
+        </div>
+    </footer>
+
+</body>
+</html>
